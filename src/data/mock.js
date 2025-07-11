@@ -13,7 +13,7 @@ export const mockData = {
 			name: "Bife acebolado com Fritas",
 			description: "Arroz, Feijão, Macarrão, Farofa, Salada Verde.",
 			price: 23,
-			image: "src/assets/img/bife-acebolado.jpg",
+			image: "src/assets/bife-acebolado.jpg",
 		},
 		{
 			id: 2,
@@ -21,7 +21,7 @@ export const mockData = {
 			name: "Frango Grelhado",
 			description: "Arroz, Feijão, Macarrão, Farofa, Salada Verde.",
 			price: 12,
-			image: "src/assets/img/fng-grlhado.png",
+			image: "src/assets/fng-grlhado.png",
 		},
 		{
 			id: 3,
@@ -29,7 +29,7 @@ export const mockData = {
 			name: "Frango a Parmegiana",
 			description: "Arroz, Feijão, Macarrão, Farofa, Salada Verde.",
 			price: 16,
-			image: "src/assets/img/file-parmegiana.jpeg",
+			image: "src/assets/file-parmegiana.jpeg",
 		},
 		{
 			id: 7,
@@ -37,7 +37,7 @@ export const mockData = {
 			name: "Frango a Milanesa",
 			description: "Arroz, Feijão, Macarrão, Farofa, Salada Verde.",
 			price: 16,
-			image: "src/assets/img/milanesa.jpg",
+			image: "src/assets/milanesa.jpg",
 		},
 		{
 			id: 8,
@@ -45,7 +45,7 @@ export const mockData = {
 			name: "Linguiça Acebolada",
 			description: "Arroz, Feijão, Macarrão, Farofa, Salada Verde.",
 			price: 16,
-			image: "src/assets/img/ling acebolada.jpg",
+			image: "src/assets/ling acebolada.jpg",
 		},
 		{
 			id: 9,
@@ -53,7 +53,7 @@ export const mockData = {
 			name: "Carré",
 			description: "Arroz, Feijão, Macarrão, Farofa, Salada Verde.",
 			price: 16,
-			image: "src/assets/img/carre.jpeg",
+			image: "src/assets/carre.jpeg",
 		},
 		{
 			id: 10,
@@ -61,7 +61,7 @@ export const mockData = {
 			name: "Omelete",
 			description: "Arroz, Feijão, Macarrão, Farofa, Salada Verde.",
 			price: 12,
-			image: "src/assets/img/omelete.png",
+			image: "src/assets/omelete.png",
 		},
 		{
 			id: 11,
@@ -69,7 +69,7 @@ export const mockData = {
 			name: "Linguiça Toscana",
 			description: "Arroz, Feijão, Macarrão, Farofa, Salada Verde.",
 			price: 12,
-			image: "src/assets/img/toscana.jpg",
+			image: "src/assets/toscana.jpg",
 		},
 		{
 			id: 12,
@@ -77,7 +77,7 @@ export const mockData = {
 			name: "Batata Maluca",
 			description: "Batata, Calabresa, Queijo Ralado...",
 			price: 22,
-			image: "src/assets/img/batata-maluca.jpg",
+			image: "src/assets/batata-maluca.jpg",
 		},
 		{
 			id: 13,
@@ -85,7 +85,7 @@ export const mockData = {
 			name: "Batata P",
 			description: "Batata, Calabresa e Bacon.",
 			price: 16,
-			image: "src/assets/img/batata p.jpg",
+			image: "src/assets/batata p.jpg",
 		},
 		{
 			id: 4,
@@ -93,7 +93,7 @@ export const mockData = {
 			name: "Sukita",
 			description: "2L",
 			price: 6.0,
-			image: "src/assets/img/sukita.jpg",
+			image: "src/assets/sukita.jpg",
 		},
 		{
 			id: 5,
@@ -101,7 +101,7 @@ export const mockData = {
 			name: "Sukita Uva",
 			description: "@l",
 			price: 6.0,
-			image: "src/assets/img/sukita-uva.webp",
+			image: "src/assets/sukita-uva.webp",
 		},
 		{
 			id: 6,
@@ -109,7 +109,7 @@ export const mockData = {
 			name: "Kuat",
 			description: "2L",
 			price: 4.0,
-			image: "src/assets/img/kuat.png",
+			image: "src/assets/kuat.png",
 		},
 	],
 };
