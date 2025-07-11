@@ -4,6 +4,7 @@ import styled from "styled-components";
 import CheckoutDrawer from "./components/CheckoutDrawer";
 import DishOfTheDayCard from "./components/DishOfTheDayCard";
 import FloatingCartButton from "./components/FloatingCartButton";
+import Footer from "./components/Footer"; // Importando o novo componente
 import PixModal from "./components/PixModal";
 // Importando componentes e dados
 import ProductCard from "./components/ProductCard";
@@ -36,8 +37,8 @@ const HeaderTitle = styled.h1`
 const HeaderSlogan = styled.p`
   font-family: 'Montserrat', sans-serif;
   font-size: 1.1rem;
-  margin-top: -0.5rem;
-  letter-spacing: 4px;
+  margin-top: 0.5rem;
+  letter-spacing: 1px;
   opacity: 0.9;
 `;
 
@@ -182,7 +183,7 @@ export default function App() {
 			)}
 			<Header>
 				<HeaderTitle>Delicias da Dri</HeaderTitle>
-				<HeaderSlogan> A Melhor Comida Caseira</HeaderSlogan>
+				<HeaderSlogan>Aqui, cada sabor no seu lugar!</HeaderSlogan>
 			</Header>
 
 			<MainContent>
@@ -237,6 +238,8 @@ export default function App() {
 					deliveryType={deliveryType}
 				/>
 			)}
+
+			<Footer />
 		</AppContainer>
 	);
 }
