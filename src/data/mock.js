@@ -92,7 +92,7 @@ export const mockData = {
 		{
 			id: 12,
 			category: "Batatas",
-			name: "Batata Maluca",
+			name: "Batata Maluca G",
 			description: "Batata, Calabresa, Queijo Ralado...",
 			price: 22,
 			image: batataMaluca
@@ -100,9 +100,9 @@ export const mockData = {
 		{
 			id: 13,
 			category: "Batatas",
-			name: "Batata P",
+			name: "Batata Maluca M",
 			description: "Batata, Calabresa e Bacon.",
-			price: 16,
+			price: 18,
 			image: batataP
 		},
 		{
