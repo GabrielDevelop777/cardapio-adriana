@@ -1,12 +1,14 @@
 import styled from "styled-components";
-// CORREÇÃO: Importando a animação com o nome correto 'toastInRight'.
 import { toastInRight } from "../../styles/GlobalStyle";
 
 export const ToastContainer = styled.div`
   position: fixed;
   top: 20px;
   right: 20px;
-  background: linear-gradient(90deg, #8E2DE2, #4A00E0);
+  background: ${(props) =>
+		props.$type === "error"
+			? "linear-gradient(90deg, #e74c3c, #c0392b)"
+			: "linear-gradient(90deg, #e67e22, #f39c12)"};
   color: white;
   padding: 1rem 1.5rem;
   border-radius: 8px;

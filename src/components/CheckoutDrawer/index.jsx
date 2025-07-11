@@ -18,6 +18,7 @@ import {
 	FinalizeButton,
 	Footer,
 	Form,
+	FormGroup,
 	Header,
 	Input,
 	Item,
@@ -27,6 +28,7 @@ import {
 	ItemName,
 	ItemPrice,
 	ItemQuantity,
+	Label,
 	OptionButton,
 	OptionsGroup,
 	Overlay,
@@ -43,12 +45,14 @@ const CheckoutDrawer = ({
 	cartTotal,
 	onUpdateQuantity,
 	onPixCheckout,
-	formData = { name: "", phone: "", address: "" },
+	formData = { name: "", phone: "", address: "", observation: "" },
 	onFormChange,
 	deliveryType,
 	onDeliveryTypeChange,
+	showToast,
 }) => {
 	const [paymentMethod, setPaymentMethod] = useState("pix");
+	const [errors, setErrors] = useState({});
 
 	const finalTotal = useMemo(() => {
 		return deliveryType === "delivery" ? cartTotal + DELIVERY_FEE : cartTotal;
@@ -59,17 +63,30 @@ const CheckoutDrawer = ({
 	const handleInputChange = (e) => {
 		const { name, value } = e.target;
 		onFormChange((prev) => ({ ...prev, [name]: value }));
+		if (errors[name]) {
+			setErrors((prev) => ({ ...prev, [name]: null }));
+		}
+	};
+
+	const validateForm = () => {
+		const newErrors = {};
+		if (!formData.name.trim()) newErrors.name = true;
+		if (deliveryType === "delivery") {
+			if (!formData.phone.trim()) newErrors.phone = true;
+			if (!formData.address.trim()) newErrors.address = true;
+		}
+		return newErrors;
 	};
 
 	const handleFinalizeOrder = () => {
-		const isDelivery = deliveryType === "delivery";
-		if (
-			!formData.name ||
-			(isDelivery && (!formData.phone || !formData.address))
-		) {
-			alert("Por favor, preencha todos os campos necessários.");
+		const formErrors = validateForm();
+		if (Object.keys(formErrors).length > 0) {
+			setErrors(formErrors);
+			showToast("Por favor, preencha os campos em vermelho.", 3000, "error");
 			return;
 		}
+
+		setErrors({}); // Limpa os erros se o formulário for válido
 
 		if (paymentMethod === "pix") {
 			onPixCheckout(finalTotal);
@@ -77,14 +94,21 @@ const CheckoutDrawer = ({
 			const orderSummary = cartItems
 				.map((item) => `${item.quantity}x ${item.name}`)
 				.join("%0A");
-			const deliveryInfo = isDelivery
-				? `*Telefone:* ${formData.phone}%0A*Endereço:* ${formData.address}%0A*Taxa de Entrega:* R$ ${DELIVERY_FEE.toFixed(2).replace(".", ",")}`
-				: "*Modalidade:* Retirar na Loja";
+			const deliveryInfo =
+				deliveryType === "delivery"
+					? `*Telefone:* ${formData.phone}%0A*Endereço:* ${formData.address}%0A*Taxa de Entrega:* R$ ${DELIVERY_FEE.toFixed(2).replace(".", ",")}`
+					: // biome-ignore lint/style/noUnusedTemplateLiteral: <explanation>
+						`*Modalidade:* Retirar na Loja`;
+
+			const observationInfo = formData.observation
+				? `%0A*Observação:* ${formData.observation}`
+				: "";
 
 			const message = `
         *Novo Pedido - Delicias da Dri* 🚀%0A
         %0A*Cliente:* ${formData.name}%0A
-        ${deliveryInfo}%0A
+        ${deliveryInfo}
+        ${observationInfo}%0A
         %0A*Itens:*%0A${orderSummary}%0A
         %0A*Total:* R$ ${finalTotal.toFixed(2).replace(".", ",")}%0A
         *Pagamento:* Dinheiro
@@ -92,13 +116,28 @@ const CheckoutDrawer = ({
 				.trim()
 				.replace(/\s+/g, "%20");
 
-			const whatsappNumber = "5521999999999"; // SUBSTITUA PELO SEU NÚMERO
+			const whatsappNumber = "5521999999999";
 			const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${message}`;
 
 			window.open(whatsappUrl, "_blank");
 			onClose();
 		}
 	};
+
+	const ObservationInput = () => (
+		<FormGroup>
+			<Label htmlFor="observation">Observações</Label>
+			<Input
+				as="textarea"
+				id="observation"
+				name="observation"
+				placeholder="Ex: retirar cebola, ponto da carne..."
+				value={formData.observation}
+				onChange={handleInputChange}
+				rows="2"
+			/>
+		</FormGroup>
+	);
 
 	return (
 		<Overlay onClick={onClose}>
@@ -157,37 +196,56 @@ const CheckoutDrawer = ({
 
 					<SectionTitle>Seus Dados</SectionTitle>
 					<Form>
-						<Input
-							type="text"
-							name="name"
-							placeholder="Seu Nome"
-							value={formData.name}
-							onChange={handleInputChange}
-							required
-						/>
-						{deliveryType === "delivery" && (
+						<FormGroup>
+							<Label htmlFor="name">Seu Nome</Label>
+							<Input
+								type="text"
+								id="name"
+								name="name"
+								placeholder="Ex: Adriana"
+								value={formData.name}
+								onChange={handleInputChange}
+								$isInvalid={!!errors.name}
+								required
+							/>
+						</FormGroup>
+
+						{deliveryType === "delivery" ? (
 							<>
-								<Input
-									type="tel"
-									name="phone"
-									placeholder="Telefone (WhatsApp)"
-									value={formData.phone}
-									onChange={handleInputChange}
-									required
-								/>
-								<Input
-									type="text"
-									name="address"
-									placeholder="Endereço Completo para Entrega"
-									value={formData.address}
-									onChange={handleInputChange}
-									required
-								/>
+								<FormGroup>
+									<Label htmlFor="phone">Telefone (WhatsApp)</Label>
+									<Input
+										type="tel"
+										id="phone"
+										name="phone"
+										placeholder="Ex: 21 99999-8888"
+										value={formData.phone}
+										onChange={handleInputChange}
+										$isInvalid={!!errors.phone}
+										required
+									/>
+								</FormGroup>
+								<FormGroup>
+									<Label htmlFor="address">Endereço Completo</Label>
+									<Input
+										type="text"
+										id="address"
+										name="address"
+										placeholder="Ex: Rua das Flores, 123, Bairro"
+										value={formData.address}
+										onChange={handleInputChange}
+										$isInvalid={!!errors.address}
+										required
+									/>
+								</FormGroup>
+								<ObservationInput />
 								<DeliveryFeeMessage>
 									Taxa de entrega: R${" "}
 									{DELIVERY_FEE.toFixed(2).replace(".", ",")}
 								</DeliveryFeeMessage>
 							</>
+						) : (
+							<ObservationInput />
 						)}
 					</Form>
 

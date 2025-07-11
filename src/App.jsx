@@ -1,4 +1,4 @@
-import React, { useState, useMemo } from "react";
+import React, { useState, useMemo, useEffect } from "react";
 import styled from "styled-components";
 
 import CheckoutDrawer from "./components/CheckoutDrawer";
@@ -14,7 +14,7 @@ import { mockData } from "./data/mock";
 const AppContainer = styled.div``;
 
 const Header = styled.header`
-  background: linear-gradient(90deg, #8E2DE2, #4A00E0);
+  background: linear-gradient(90deg, #e67e22, #f39c12);
   padding: 2rem 0;
   text-align: center;
   box-shadow: 0 4px 12px rgba(0,0,0,0.1);
@@ -29,15 +29,15 @@ const HeaderTitle = styled.h1`
   font-family: 'Great Vibes', cursive;
   font-size: 4.5rem;
   font-weight: 400;
-  text-shadow: 2px 2px 5px rgba(0,0,0,0.3);
+  text-shadow: 1px 1px 4px rgba(0,0,0,0.25);
   margin: 0;
 `;
 
 const HeaderSlogan = styled.p`
   font-family: 'Montserrat', sans-serif;
   font-size: 1.1rem;
-  margin-top: 0.5rem;
-  letter-spacing: 1px;
+  margin-top: -0.5rem;
+  letter-spacing: 4px;
   opacity: 0.9;
 `;
 
@@ -57,7 +57,7 @@ const SectionTitle = styled.h2`
   color: #333;
   margin-bottom: 1.5rem;
   padding-bottom: 0.5rem;
-  border-bottom: 2px solid #8E2DE2;
+  border-bottom: 2px solid #e67e22;
 `;
 
 const ProductList = styled.div`
@@ -80,8 +80,23 @@ export default function App() {
 		name: "",
 		phone: "",
 		address: "",
+		observation: "",
 	});
 	const [deliveryType, setDeliveryType] = useState("pickup");
+
+	// Efeito para travar o scroll do body quando um modal estiver aberto
+	useEffect(() => {
+		const body = document.body;
+		if (isDrawerOpen || isPixModalOpen) {
+			body.style.overflow = "hidden";
+		} else {
+			body.style.overflow = "auto";
+		}
+
+		return () => {
+			body.style.overflow = "auto";
+		};
+	}, [isDrawerOpen, isPixModalOpen]);
 
 	const showToast = (message, duration = 2000, type = "info") => {
 		setToast({ show: true, message, duration, type });
@@ -134,7 +149,7 @@ export default function App() {
 	const handleClosePixModal = () => {
 		setPixModalOpen(false);
 		setCart([]);
-		setFormData({ name: "", phone: "", address: "" });
+		setFormData({ name: "", phone: "", address: "", observation: "" });
 		setDeliveryType("pickup");
 	};
 
@@ -167,7 +182,7 @@ export default function App() {
 			)}
 			<Header>
 				<HeaderTitle>Delicias da Dri</HeaderTitle>
-				<HeaderSlogan>Aqui, cada sabor no seu lugar!</HeaderSlogan>
+				<HeaderSlogan>Comida Caseira</HeaderSlogan>
 			</Header>
 
 			<MainContent>
@@ -210,6 +225,7 @@ export default function App() {
 				onFormChange={setFormData}
 				deliveryType={deliveryType}
 				onDeliveryTypeChange={setDeliveryType}
+				showToast={showToast}
 			/>
 
 			{isPixModalOpen && (

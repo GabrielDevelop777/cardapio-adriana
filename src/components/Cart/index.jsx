@@ -1,5 +1,4 @@
 import { MinusCircle, PlusCircle, ShoppingCart } from "lucide-react";
-import React from "react";
 import {
 	CheckoutButton,
 	ClearButton,

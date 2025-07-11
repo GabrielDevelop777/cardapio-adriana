@@ -1,6 +1,6 @@
 import { Check, Send } from "lucide-react";
 import { QRCodeSVG } from "qrcode.react";
-import { useMemo, useState } from "react";
+import React, { useState, useMemo } from "react";
 import { generatePixCode } from "../../lib/pix";
 import {
 	ActionButton,
@@ -46,13 +46,19 @@ const PixModal = ({ total, onClose, formData, cartItems, deliveryType }) => {
 		const deliveryInfo =
 			deliveryType === "delivery"
 				? `*Telefone:* ${formData.phone}%0A*Endereço:* ${formData.address}%0A*Taxa de Entrega:* R$ ${DELIVERY_FEE.toFixed(2).replace(".", ",")}`
-				: "*Modalidade:* Retirar na Loja";
+				: // biome-ignore lint/style/noUnusedTemplateLiteral: <explanation>
+					`*Modalidade:* Retirar na Loja`;
+
+		const observationInfo = formData.observation
+			? `%0A*Observação:* ${formData.observation}`
+			: "";
 
 		const message = `
       *Comprovante de Pagamento - Delicias da Dri* ✅%0A
       %0AOlá! Segue o comprovante do meu pedido.%0A
       %0A*Cliente:* ${formData.name}%0A
-      ${deliveryInfo}%0A
+      ${deliveryInfo}
+      ${observationInfo}%0A
       %0A*Itens:*%0A${orderSummary}%0A
       %0A*Total Pago:* R$ ${total.toFixed(2).replace(".", ",")}%0A
       *Pagamento:* PIX

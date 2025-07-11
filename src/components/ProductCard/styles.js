@@ -19,7 +19,9 @@ export const Card = styled.div`
 export const CardImage = styled.img`
   width: 100%;
   height: 160px;
-  object-fit: cover;
+  /* CORREÇÃO: Aplica o estilo condicionalmente */
+  object-fit: ${(props) => (props.$isBeverage ? "contain" : "cover")};
+  padding: ${(props) => (props.$isBeverage ? "0.5rem" : "0")};
 `;
 
 export const CardBody = styled.div`
@@ -57,7 +59,7 @@ export const Price = styled.p`
 `;
 
 export const AddButton = styled.button`
-  background: linear-gradient(90deg, #8E2DE2, #4A00E0);
+  background: linear-gradient(90deg, #e67e22, #f39c12);
   color: white;
   border: none;
   padding: 0.6rem 1.2rem;
@@ -73,6 +75,6 @@ export const AddButton = styled.button`
 
   &:hover {
     transform: scale(1.05);
-    box-shadow: 0 4px 15px rgba(74, 0, 224, 0.4);
+    box-shadow: 0 4px 15px rgba(230, 126, 34, 0.4);
   }
 `;

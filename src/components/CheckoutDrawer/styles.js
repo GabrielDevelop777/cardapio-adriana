@@ -37,7 +37,7 @@ export const Header = styled.div`
 
   h2 {
     font-size: 1.5rem;
-    color: #4A00E0;
+    color: #e67e22;
   }
 `;
 
@@ -74,19 +74,36 @@ export const CartList = styled.div`
 export const Form = styled.form`
   display: flex;
   flex-direction: column;
-  gap: 1rem;
+  gap: 1.2rem;
+`;
+
+export const FormGroup = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+`;
+
+export const Label = styled.label`
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: #555;
 `;
 
 export const Input = styled.input`
   width: 100%;
   padding: 0.8rem 1rem;
-  border: 1px solid #ddd;
+  border: 1px solid ${(props) => (props.$isInvalid ? "#e74c3c" : "#ddd")};
   border-radius: 8px;
   font-size: 1rem;
+  transition: border-color 0.2s, box-shadow 0.2s;
+
   &:focus {
     outline: none;
-    border-color: #4A00E0;
-    box-shadow: 0 0 0 2px rgba(74, 0, 224, 0.2);
+    border-color: ${(props) => (props.$isInvalid ? "#e74c3c" : "#e67e22")};
+    box-shadow: 0 0 0 2px ${(props) => (props.$isInvalid ? "rgba(231, 76, 60, 0.2)" : "rgba(230, 126, 34, 0.2)")};
+  }
+  &::placeholder {
+    color: #aaa;
   }
 `;
 
@@ -117,9 +134,9 @@ export const OptionButton = styled.button`
   gap: 0.5rem;
   transition: all 0.2s;
 
-  background-color: ${(props) => (props.$isActive ? "#4A00E0" : "#f0f2f5")};
+  background-color: ${(props) => (props.$isActive ? "#e67e22" : "#f0f2f5")};
   color: ${(props) => (props.$isActive ? "white" : "#333")};
-  border: 2px solid ${(props) => (props.$isActive ? "#4A00E0" : "#f0f2f5")};
+  border: 2px solid ${(props) => (props.$isActive ? "#e67e22" : "#f0f2f5")};
 `;
 
 export const Footer = styled.div`
@@ -145,7 +162,7 @@ export const FinalizeButton = styled.button`
   font-weight: 600;
   border-radius: 8px;
   cursor: pointer;
-  background-color: #2a9d8f;
+  background-color: #e67e22;
   color: white;
   border: none;
   transition: background-color 0.2s;
@@ -153,7 +170,6 @@ export const FinalizeButton = styled.button`
   &:disabled { background-color: #ccc; cursor: not-allowed; }
 `;
 
-// Estilos para os itens do carrinho dentro da gaveta
 export const Item = styled.div`
   display: flex;
   align-items: center;
@@ -193,10 +209,10 @@ export const ControlButton = styled.button`
   background: none;
   border: none;
   cursor: pointer;
-  color: #4A00E0;
+  color: #e67e22;
   display: flex;
   align-items: center;
-  &:hover { color: #8E2DE2; }
+  &:hover { color: #f39c12; }
 `;
 
 export const ItemQuantity = styled.span`

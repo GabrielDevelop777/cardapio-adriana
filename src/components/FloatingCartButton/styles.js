@@ -7,7 +7,7 @@ export const Button = styled.button`
   right: 2rem;
   width: 60px;
   height: 60px;
-  background: linear-gradient(45deg, #f9773d, #e85d04);
+  background: linear-gradient(45deg, #f39c12, #e67e22);
   color: white;
   border: none;
   border-radius: 50%;
@@ -29,7 +29,7 @@ export const Badge = styled.span`
   position: absolute;
   top: -5px;
   right: -5px;
-  background-color: #e74c3c;
+  background-color: #c0392b;
   color: white;
   width: 24px;
   height: 24px;
