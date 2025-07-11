@@ -182,7 +182,7 @@ export default function App() {
 			)}
 			<Header>
 				<HeaderTitle>Delicias da Dri</HeaderTitle>
-				<HeaderSlogan>Comida Caseira</HeaderSlogan>
+				<HeaderSlogan> A Melhor Comida Caseira</HeaderSlogan>
 			</Header>
 
 			<MainContent>
