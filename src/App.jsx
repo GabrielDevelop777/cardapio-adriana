@@ -244,7 +244,7 @@ export default function App() {
 			)}
 			<Header>
 				<HeaderTitle>Delicias da Dri</HeaderTitle>
-				<HeaderSlogan>Aqui, cada sabor no seu lugar!</HeaderSlogan>
+				<HeaderSlogan>"Aqui, é cada sabor no seu lugar!"</HeaderSlogan>
 				<StatusBadge $isOpen={isStoreOpen}>
 					{isStoreOpen ? "Aberto" : "Fechado"}
 				</StatusBadge>

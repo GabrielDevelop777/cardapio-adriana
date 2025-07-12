@@ -21,7 +21,7 @@ const PixModal = ({ total, onClose, formData, cartItems, deliveryType }) => {
 	const [copied, setCopied] = useState(false);
 	const [paymentStep, setPaymentStep] = useState("awaiting");
 
-	const pixKey = "03391182296";
+	const pixKey = "+5521980681134";
 	const merchantName = "Adriana Silva";
 	const merchantCity = "DUQUE DE CAXIAS";
 
@@ -38,7 +38,7 @@ const PixModal = ({ total, onClose, formData, cartItems, deliveryType }) => {
 	};
 
 	const handleSendReceipt = () => {
-		const whatsappNumber = "5521999999999"; // SUBSTITUA PELO SEU NÚMERO
+		const whatsappNumber = "5521965150526"; // SUBSTITUA PELO SEU NÚMERO
 
 		const orderSummary = cartItems
 			.map((item) => `${item.quantity}x ${item.name}`)
