@@ -1,4 +1,4 @@
-import React, { useState, useMemo, useEffect } from "react";
+import React, { useState, useMemo, useEffect, useCallback } from "react";
 import styled from "styled-components";
 
 import CheckoutDrawer from "./components/CheckoutDrawer";
@@ -10,7 +10,7 @@ import PixModal from "./components/PixModal";
 import ProductCard from "./components/ProductCard";
 import Toast from "./components/Toast";
 import { mockData } from "./data/mock";
-import useCountdown from "./hooks/useCountdown"; // Importando o novo hook
+import useCountdown from "./hooks/useCountdown";
 
 // --- Estilos do Layout Principal ---
 const AppContainer = styled.div``;
@@ -88,7 +88,7 @@ const DishOfTheDayTitle = styled(SectionTitle)`
     content: '';
     display: block;
     width: 100px;
-    height: 2px;
+    height: 4px;
     background: #e67e22;
     margin: 0.75rem auto 0;
     border-radius: 2px;
@@ -119,7 +119,7 @@ export default function App() {
 	});
 	const [deliveryType, setDeliveryType] = useState("pickup");
 	const [isStoreOpen, setIsStoreOpen] = useState(false);
-	const countdown = useCountdown(11); // Contagem para as 11h
+	const countdown = useCountdown(11);
 
 	useEffect(() => {
 		const checkStoreStatus = () => {
@@ -151,6 +151,10 @@ export default function App() {
 	const showToast = (message, duration = 2000, type = "info") => {
 		setToast({ show: true, message, duration, type });
 	};
+
+	const handleCloseToast = useCallback(() => {
+		setToast((prev) => ({ ...prev, show: false }));
+	}, []);
 
 	const handleUpdateQuantity = (productId, newQuantity) => {
 		if (newQuantity <= 0) {
@@ -235,12 +239,12 @@ export default function App() {
 					message={toast.message}
 					duration={toast.duration}
 					type={toast.type}
-					onClose={() => setToast({ show: false, message: "", type: "info" })}
+					onClose={handleCloseToast}
 				/>
 			)}
 			<Header>
 				<HeaderTitle>Delicias da Dri</HeaderTitle>
-				<HeaderSlogan>Aqui, é cada sabor no seu lugar!</HeaderSlogan>
+				<HeaderSlogan>Aqui, cada sabor no seu lugar!</HeaderSlogan>
 				<StatusBadge $isOpen={isStoreOpen}>
 					{isStoreOpen ? "Aberto" : "Fechado"}
 				</StatusBadge>

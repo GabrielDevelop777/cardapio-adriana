@@ -7,7 +7,6 @@ const useCountdown = (targetHour) => {
 
 		targetDate.setHours(targetHour, 0, 0, 0);
 
-		// Se o horário alvo de hoje já passou, define para o dia seguinte
 		if (now.getHours() >= targetHour) {
 			targetDate.setDate(targetDate.getDate() + 1);
 		}
@@ -34,7 +33,6 @@ const useCountdown = (targetHour) => {
 			setTimeLeft(calculateTimeLeft());
 		}, 1000);
 
-		// Limpa o timer quando o componente é desmontado
 		return () => clearTimeout(timer);
 	});
 

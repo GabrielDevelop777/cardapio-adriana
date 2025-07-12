@@ -16,7 +16,6 @@ export const scaleIn = keyframes`
   }
 `;
 
-// Animação atualizada para o Toast
 export const toastInRight = keyframes`
   from {
     transform: translateX(110%);
@@ -25,6 +24,17 @@ export const toastInRight = keyframes`
   to {
     transform: translateX(0);
     opacity: 1;
+  }
+`;
+
+export const toastOutRight = keyframes`
+  from {
+    transform: translateX(0);
+    opacity: 1;
+  }
+  to {
+    transform: translateX(110%);
+    opacity: 0;
   }
 `;
 

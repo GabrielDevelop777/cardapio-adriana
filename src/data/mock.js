@@ -12,6 +12,7 @@ import {
 	milanesaImg,
 	omeleteImg,
 	panquecaImg,
+	picadinhoImg,
 	pratoPrincipal,
 	sukitaImg,
 	toscanaImg,
@@ -21,9 +22,9 @@ export const mockData = {
 	dishOfTheDay: {
 		id: 101,
 		name: "Picanho de Carne",
-		description: "Arroz e carne com batata",
+		description: "Arroz, Feijão, Macarrão, Farofa, Salada Verde.",
 		price: 23,
-		image: pratoPrincipal,
+		image: picadinhoImg,
 	},
 	products: [
 		{

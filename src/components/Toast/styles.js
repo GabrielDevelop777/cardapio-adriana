@@ -1,5 +1,5 @@
-import styled from "styled-components";
-import { toastInRight } from "../../styles/GlobalStyle";
+import styled, { css } from "styled-components";
+import { toastInRight, toastOutRight } from "../../styles/GlobalStyle";
 
 export const ToastContainer = styled.div`
   position: fixed;
@@ -19,5 +19,14 @@ export const ToastContainer = styled.div`
   display: flex;
   align-items: center;
   gap: 10px;
+  
+  /* Animação de entrada */
   animation: ${toastInRight} 0.5s cubic-bezier(0.215, 0.610, 0.355, 1);
+
+  /* Aplica a animação de saída condicionalmente */
+  ${(props) =>
+		props.$isExiting &&
+		css`
+    animation: ${toastOutRight} 0.5s cubic-bezier(0.215, 0.610, 0.355, 1) forwards;
+  `}
 `;

@@ -12,6 +12,7 @@ import linguicaAcebolada from "./ling acebolada.jpg";
 import milanesaImg from "./milanesa.jpg";
 import omeleteImg from "./omelete.png";
 import panquecaImg from "./panqueca.jpeg";
+import picadinhoImg from "./picadinho.jpg";
 import pratoPrincipal from "./prato-principal.jpg";
 import sukitaUva from "./sukita-uva.webp";
 import sukitaImg from "./sukita.jpg";
@@ -20,6 +21,7 @@ import toscanaImg from "./toscana.jpg";
 // Exporte-as como variáveis
 export {
 	batataP,
+	picadinhoImg,
 	guaravitaImg,
 	cocaImg,
 	guaranaImg,

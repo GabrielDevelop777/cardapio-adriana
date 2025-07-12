@@ -1,17 +1,25 @@
 import { CheckCircle, Info, XCircle } from "lucide-react";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { ToastContainer } from "./styles";
 
 const Toast = ({ message, duration = 3000, onClose, type = "info" }) => {
+	const [isExiting, setIsExiting] = useState(false);
+
 	useEffect(() => {
 		const timer = setTimeout(() => {
-			onClose();
+			setIsExiting(true);
 		}, duration);
 
 		return () => {
 			clearTimeout(timer);
 		};
-	}, [duration, onClose]);
+	}, [duration]);
+
+	const handleAnimationEnd = () => {
+		if (isExiting) {
+			onClose();
+		}
+	};
 
 	const getIcon = () => {
 		switch (type) {
@@ -25,7 +33,11 @@ const Toast = ({ message, duration = 3000, onClose, type = "info" }) => {
 	};
 
 	return (
-		<ToastContainer $type={type}>
+		<ToastContainer
+			$type={type}
+			$isExiting={isExiting}
+			onAnimationEnd={handleAnimationEnd}
+		>
 			{getIcon()}
 			<span>{message}</span>
 		</ToastContainer>

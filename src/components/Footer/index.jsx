@@ -26,7 +26,7 @@ const Footer = () => {
 					<Instagram size={28} />
 				</SocialLink>
 				<SocialLink
-					href="#"
+					href="https://www.facebook.com/adriana.silva179004/"
 					target="_blank"
 					rel="noopener noreferrer"
 					aria-label="Facebook"
@@ -44,7 +44,7 @@ const Footer = () => {
 			</SocialLinks>
 
 			<InfoSection>
-				<p>Parque Paulista</p>
+				<p>Parque Paulista 📍</p>
 				<p>Aberto de segunda à sabado, 11:00 - 15:00</p>
 			</InfoSection>
 

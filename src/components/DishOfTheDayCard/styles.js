@@ -12,15 +12,14 @@ export const Card = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: flex-start;
-  box-shadow: 0 8px 24px rgba(0,0,0,0.2);
+  box-shadow: rgba(231, 77, 60, 0.43) 0px 1px 4px, rgba(230, 125, 34, 0.57) 0px 0px 0px 3px;
   animation: ${fadeIn} 0.5s ease-out;
   min-height: 300px;
 
   @media (max-width: 768px) {
     padding: 2rem 1.5rem;
     min-height: 280px;
-    min-width: 427px;
-    margin-left: -39px;
+
   }
 `;
 
