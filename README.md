@@ -1,6 +1,6 @@
 #  Delicias da Dri - Cardápio Digital 🍽️✨
 
-![Capa do Cardápio](../cardapio-adriana//src/assets/desktok.png)
+![Capa do Cardápio](src/assets//capa.png)
 
 Bem-vindo ao repositório do Cardápio Digital "Delicias da Dri"! Este projeto é uma solução moderna e completa para pequenos negócios de alimentação, desenvolvido como um freelancer para uma cliente especial. A aplicação é totalmente responsiva e oferece um fluxo de pedido intuitivo, desde a escolha dos pratos até a finalização do pagamento.
 
@@ -11,14 +11,12 @@ Bem-vindo ao repositório do Cardápio Digital "Delicias da Dri"! Este projeto �
 ## 📸 Screenshots
 
 <p align="center">
-  <strong>Versão para Desktop</strong><br>
-  <em>(Substitua esta imagem por uma captura de tela da versão para desktop)</em><br>
+  <strong>Versão para Desktop</strong><br><br>
   <img src="src/assets/desktok.png" alt="Demonstração em Desktop" width="80%">
 </p>
 
 <p align="center">
-  <strong>Versão para Celular</strong><br>
-  <em>(Substitua esta imagem por uma captura de tela da versão para celular)</em><br>
+  <strong>Versão para Celular</strong><br>><br>
   <img src="src/assets/celular.png" alt="Demonstração em Celular" height="400px">
 </p>
 
