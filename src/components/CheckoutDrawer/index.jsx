@@ -325,9 +325,7 @@ const CheckoutDrawer = ({
 						<span>R$ {finalTotal.toFixed(2).replace(".", ",")}</span>
 					</Total>
 					<FinalizeButton onClick={handleFinalizeOrder}>
-						{paymentMethod === "pix"
-							? "Pagar com PIX"
-							: "Enviar Pedido via WhatsApp"}
+						{paymentMethod === "pix" ? "Pagar com PIX" : "Enviar Pedido"}
 					</FinalizeButton>
 				</Footer>
 			</DrawerContainer>
