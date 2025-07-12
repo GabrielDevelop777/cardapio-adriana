@@ -1,10 +1,10 @@
 #  Delicias da Dri - Cardápio Digital 🍽️✨
 
-![Capa do Cardápio](https://i.imgur.com/URL_DA_SUA_IMAGEM_DE_CAPA.png)
+![Capa do Cardápio](../cardapio-adriana//src/assets/desktok.png)
 
 Bem-vindo ao repositório do Cardápio Digital "Delicias da Dri"! Este projeto é uma solução moderna e completa para pequenos negócios de alimentação, desenvolvido como um freelancer para uma cliente especial. A aplicação é totalmente responsiva e oferece um fluxo de pedido intuitivo, desde a escolha dos pratos até a finalização do pagamento.
 
-**[➡️ Acesse a demonstração ao vivo aqui!](https://SEU_LINK_DO_VERCEL.app)**
+**[➡️ Acesse a demonstração ao vivo aqui!](https://cardapio-adriana.vercel.app/)**
 
 ---
 
@@ -13,13 +13,13 @@ Bem-vindo ao repositório do Cardápio Digital "Delicias da Dri"! Este projeto �
 <p align="center">
   <strong>Versão para Desktop</strong><br>
   <em>(Substitua esta imagem por uma captura de tela da versão para desktop)</em><br>
-  <img src="https://i.imgur.com/URL_DA_IMAGEM_DESKTOP.png" alt="Demonstração em Desktop" width="80%">
+  <img src="src/assets/desktok.png" alt="Demonstração em Desktop" width="80%">
 </p>
 
 <p align="center">
   <strong>Versão para Celular</strong><br>
   <em>(Substitua esta imagem por uma captura de tela da versão para celular)</em><br>
-  <img src="https://i.imgur.com/URL_DA_IMAGEM_MOBILE.png" alt="Demonstração em Celular" height="400px">
+  <img src="src/assets/celular.png" alt="Demonstração em Celular" height="400px">
 </p>
 
 ---
