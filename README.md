@@ -71,12 +71,12 @@ Para rodar este projeto na sua máquina, siga os passos abaixo.
 
 1.  **Clone o repositório:**
     ```bash
-    git clone [https://github.com/SEU_USUARIO/NOME_DO_REPOSITORIO.git](https://github.com/SEU_USUARIO/NOME_DO_REPOSITORIO.git)
+    git clone [https://github.com/GabrielDevelop777/cardapio-adriana.git](https://github.com/GabrielDevelop777/cardapio-adriana.git)
     ```
 
 2.  **Acesse a pasta do projeto:**
     ```bash
-    cd NOME_DO_REPOSITORIO
+    cd cardapio-adriana
     ```
 
 3.  **Instale as dependências:**
