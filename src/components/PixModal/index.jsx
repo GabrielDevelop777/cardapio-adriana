@@ -54,8 +54,8 @@ const PixModal = ({ total, onClose, formData, cartItems, deliveryType }) => {
 			: "";
 
 		const message = `
-      *Comprovante de Pagamento - Delicias da Dri* ✅%0A
-      %0AOlá! Segue o comprovante do meu pedido.%0A
+      *🛍️ Resumo do Pedido - Delicias da Dri* ✅%0A
+      %0AOlá! Segue meu pedido.%0A
       %0A*Cliente:* ${formData.name}%0A
       ${deliveryInfo}
       ${observationInfo}%0A
