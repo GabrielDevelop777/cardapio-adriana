@@ -4,12 +4,13 @@ import styled from "styled-components";
 import CheckoutDrawer from "./components/CheckoutDrawer";
 import DishOfTheDayCard from "./components/DishOfTheDayCard";
 import FloatingCartButton from "./components/FloatingCartButton";
-import Footer from "./components/Footer"; // Importando o novo componente
+import Footer from "./components/Footer";
 import PixModal from "./components/PixModal";
 // Importando componentes e dados
 import ProductCard from "./components/ProductCard";
 import Toast from "./components/Toast";
 import { mockData } from "./data/mock";
+import useCountdown from "./hooks/useCountdown"; // Importando o novo hook
 
 // --- Estilos do Layout Principal ---
 const AppContainer = styled.div``;
@@ -42,6 +43,20 @@ const HeaderSlogan = styled.p`
   opacity: 0.9;
 `;
 
+const StatusBadge = styled.div`
+  display: inline-block;
+  padding: 0.4rem 1rem;
+  border-radius: 20px;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.9rem;
+  font-weight: 600;
+  margin-top: 1rem;
+  background-color: ${(props) => (props.$isOpen ? "#2ecc71" : "#e74c3c")};
+  color: white;
+  transition: background-color 0.3s;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.15);
+`;
+
 const MainContent = styled.main`
   padding: 2.5rem;
   max-width: 1200px;
@@ -49,7 +64,7 @@ const MainContent = styled.main`
 `;
 
 const MenuSection = styled.section`
-  margin-bottom: 2.5rem;
+  margin-bottom: 3.5rem;
 `;
 
 const SectionTitle = styled.h2`
@@ -59,6 +74,25 @@ const SectionTitle = styled.h2`
   margin-bottom: 1.5rem;
   padding-bottom: 0.5rem;
   border-bottom: 2px solid #e67e22;
+`;
+
+const DishOfTheDayTitle = styled(SectionTitle)`
+  text-align: center;
+  border-bottom: none;
+  font-size: 2.5rem;
+  color: #333;
+  position: relative;
+  margin-bottom: 2rem;
+
+  &::after {
+    content: '';
+    display: block;
+    width: 100px;
+    height: 2px;
+    background: #e67e22;
+    margin: 0.75rem auto 0;
+    border-radius: 2px;
+  }
 `;
 
 const ProductList = styled.div`
@@ -84,8 +118,23 @@ export default function App() {
 		observation: "",
 	});
 	const [deliveryType, setDeliveryType] = useState("pickup");
+	const [isStoreOpen, setIsStoreOpen] = useState(false);
+	const countdown = useCountdown(11); // Contagem para as 11h
 
-	// Efeito para travar o scroll do body quando um modal estiver aberto
+	useEffect(() => {
+		const checkStoreStatus = () => {
+			const now = new Date();
+			const currentHour = now.getHours();
+			const isOpen = currentHour >= 11 && currentHour < 19;
+			setIsStoreOpen(isOpen);
+		};
+
+		checkStoreStatus();
+		const interval = setInterval(checkStoreStatus, 60000);
+
+		return () => clearInterval(interval);
+	}, []);
+
 	useEffect(() => {
 		const body = document.body;
 		if (isDrawerOpen || isPixModalOpen) {
@@ -116,6 +165,10 @@ export default function App() {
 	};
 
 	const handleAddToCart = (productToAdd) => {
+		if (!isStoreOpen) {
+			showToast("Desculpe, estamos fechados no momento.", 3000, "error");
+			return;
+		}
 		setCart((prev) => {
 			const existing = prev.find((item) => item.id === productToAdd.id);
 			if (existing) {
@@ -155,6 +208,10 @@ export default function App() {
 	};
 
 	const handleFloatingCartClick = () => {
+		if (!isStoreOpen) {
+			showToast("Desculpe, estamos fechados no momento.", 3000, "error");
+			return;
+		}
 		if (cartItemCount === 0) {
 			showToast("Seu carrinho está vazio!");
 		} else {
@@ -183,14 +240,20 @@ export default function App() {
 			)}
 			<Header>
 				<HeaderTitle>Delicias da Dri</HeaderTitle>
-				<HeaderSlogan>Aqui, cada sabor no seu lugar!</HeaderSlogan>
+				<HeaderSlogan>Aqui, é cada sabor no seu lugar!</HeaderSlogan>
+				<StatusBadge $isOpen={isStoreOpen}>
+					{isStoreOpen ? "Aberto" : "Fechado"}
+				</StatusBadge>
 			</Header>
 
 			<MainContent>
 				<MenuSection>
+					<DishOfTheDayTitle>Prato do Dia</DishOfTheDayTitle>
 					<DishOfTheDayCard
 						product={mockData.dishOfTheDay}
 						onAddToCart={handleAddToCart}
+						isStoreOpen={isStoreOpen}
+						countdown={countdown}
 					/>
 				</MenuSection>
 
@@ -203,6 +266,8 @@ export default function App() {
 									key={product.id}
 									product={product}
 									onAddToCart={handleAddToCart}
+									isStoreOpen={isStoreOpen}
+									countdown={countdown}
 								/>
 							))}
 						</ProductList>

@@ -3,12 +3,12 @@ import {
 	DollarSign,
 	MinusCircle,
 	PlusCircle,
-	Smartphone,
 	Store,
 	Truck,
 	X,
 } from "lucide-react";
 import React, { useState, useMemo } from "react";
+import PixIcon from "../PixIcon"; // Importando o novo ícone
 import {
 	CartList,
 	CloseButton,
@@ -40,7 +40,6 @@ import {
 const DELIVERY_FEE = 5.0;
 const CARD_FEE = 1.5;
 
-// CORREÇÃO: Componente movido para fora para evitar recriação em cada render.
 const ObservationInput = ({ value, onChange }) => (
 	<FormGroup>
 		<Label htmlFor="observation">Observações</Label>
@@ -69,7 +68,7 @@ const CheckoutDrawer = ({
 	onDeliveryTypeChange,
 	showToast,
 }) => {
-	const [paymentMethod, setPaymentMethod] = useState("pix"); // 'pix', 'dinheiro', 'credito', 'debito'
+	const [paymentMethod, setPaymentMethod] = useState("pix");
 	const [errors, setErrors] = useState({});
 
 	const finalTotal = useMemo(() => {
@@ -141,7 +140,8 @@ const CheckoutDrawer = ({
 			const deliveryInfo =
 				deliveryType === "delivery"
 					? `*Telefone:* ${formData.phone}%0A*Endereço:* ${formData.address}%0A*Taxa de Entrega:* R$ ${DELIVERY_FEE.toFixed(2).replace(".", ",")}`
-					: "*Modalidade:* Retirar na Loja";
+					: // biome-ignore lint/style/noUnusedTemplateLiteral: <explanation>
+						`*Modalidade:* Retirar na Loja`;
 
 			const observationInfo = formData.observation
 				? `%0A*Observação:* ${formData.observation}`
@@ -160,7 +160,7 @@ const CheckoutDrawer = ({
 				.trim()
 				.replace(/\s+/g, "%20");
 
-			const whatsappNumber = "552196515-0526";
+			const whatsappNumber = "5521965150526";
 			const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${message}`;
 
 			window.open(whatsappUrl, "_blank");
@@ -169,7 +169,6 @@ const CheckoutDrawer = ({
 	};
 
 	return (
-		// CORREÇÃO: O onClick foi removido do Overlay
 		<Overlay>
 			<DrawerContainer onClick={(e) => e.stopPropagation()}>
 				<Header>
@@ -291,7 +290,7 @@ const CheckoutDrawer = ({
 							$isActive={paymentMethod === "pix"}
 							onClick={() => setPaymentMethod("pix")}
 						>
-							<CreditCard size={20} /> PIX
+							<PixIcon size={20} /> PIX
 						</OptionButton>
 						<OptionButton
 							$isActive={paymentMethod === "dinheiro"}
@@ -303,13 +302,13 @@ const CheckoutDrawer = ({
 							$isActive={paymentMethod === "credito"}
 							onClick={() => setPaymentMethod("credito")}
 						>
-							<Smartphone size={20} /> Crédito
+							<CreditCard size={20} /> Crédito
 						</OptionButton>
 						<OptionButton
 							$isActive={paymentMethod === "debito"}
 							onClick={() => setPaymentMethod("debito")}
 						>
-							<Smartphone size={20} /> Débito
+							<CreditCard size={20} /> Débito
 						</OptionButton>
 					</OptionsGroup>
 					{paymentMethod === "credito" && (

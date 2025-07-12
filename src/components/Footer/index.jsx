@@ -18,7 +18,7 @@ const Footer = () => {
 
 			<SocialLinks>
 				<SocialLink
-					href="#"
+					href="https://www.instagram.com/adriana_silva101/"
 					target="_blank"
 					rel="noopener noreferrer"
 					aria-label="Instagram"
@@ -34,7 +34,7 @@ const Footer = () => {
 					<Facebook size={28} />
 				</SocialLink>
 				<SocialLink
-					href="https://wa.me/5521999999999"
+					href="https://wa.me/5521965150526"
 					target="_blank"
 					rel="noopener noreferrer"
 					aria-label="WhatsApp"
@@ -44,8 +44,8 @@ const Footer = () => {
 			</SocialLinks>
 
 			<InfoSection>
-				<p>Duque de Caxias, Rio de Janeiro</p>
-				<p>Aberto todos os dias, 18:00 - 23:00</p>
+				<p>Parque Paulista</p>
+				<p>Aberto de segunda à sabado, 11:00 - 15:00</p>
 			</InfoSection>
 
 			<Copyright>

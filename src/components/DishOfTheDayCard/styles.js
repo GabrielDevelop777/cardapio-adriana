@@ -8,7 +8,6 @@ export const Card = styled.div`
   border-radius: 16px;
   padding: 2.5rem;
   color: white;
-  margin-bottom: 2.5rem;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -20,18 +19,9 @@ export const Card = styled.div`
   @media (max-width: 768px) {
     padding: 2rem 1.5rem;
     min-height: 280px;
-    align-items: center;
-    text-align: center;
+    min-width: 427px;
+    margin-left: -39px;
   }
-`;
-
-export const Tag = styled.span`
-  background-color: #e67e22;
-  padding: 0.4rem 0.8rem;
-  border-radius: 20px;
-  font-size: 0.9rem;
-  font-weight: 600;
-  margin-bottom: 1rem;
 `;
 
 export const Title = styled.h2`
@@ -52,7 +42,6 @@ export const Description = styled.p`
 
   @media (max-width: 768px) {
     font-size: 1rem;
-    max-width: 90%;
   }
 `;
 
@@ -65,9 +54,8 @@ export const Footer = styled.div`
 
   @media (max-width: 768px) {
     flex-direction: column;
-    align-items: stretch;
+    align-items: flex-start;
     gap: 1rem;
-    max-width: 300px;
   }
 `;
 
@@ -77,12 +65,17 @@ export const Price = styled.p`
 
   @media (max-width: 768px) {
     font-size: 1.75rem;
-    text-align: center;
   }
 `;
 
 export const AddButton = styled(BaseAddButton)`
   @media (max-width: 768px) {
+    width: 100%;
     justify-content: center;
+  }
+  
+  &:disabled {
+    font-size: 0.9rem;
+    padding: 0.8rem 1rem;
   }
 `;

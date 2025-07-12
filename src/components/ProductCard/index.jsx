@@ -10,7 +10,7 @@ import {
 	Title,
 } from "./styles";
 
-const ProductCard = ({ product, onAddToCart }) => {
+const ProductCard = ({ product, onAddToCart, isStoreOpen, countdown }) => {
 	const isBeverage = product.category === "Bebidas";
 
 	return (
@@ -18,14 +18,19 @@ const ProductCard = ({ product, onAddToCart }) => {
 			<CardImage
 				src={product.image}
 				alt={product.name}
-				$isBeverage={isBeverage} // Passa a prop para o styled-component
+				$isBeverage={isBeverage}
 			/>
 			<CardBody>
 				<Title>{product.name}</Title>
 				<Description>{product.description}</Description>
 				<CardFooter>
 					<Price>{`R$ ${product.price.toFixed(2).replace(".", ",")}`}</Price>
-					<AddButton onClick={() => onAddToCart(product)}>Adicionar</AddButton>
+					<AddButton
+						onClick={() => onAddToCart(product)}
+						disabled={!isStoreOpen}
+					>
+						{isStoreOpen ? "Adicionar" : `Abre em ${countdown}`}
+					</AddButton>
 				</CardFooter>
 			</CardBody>
 		</Card>

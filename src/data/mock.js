@@ -1,89 +1,90 @@
 import {
-  batataP,
-  linguicaAcebolada,
-  toscanaImg,
-  sukitaUva,
-  pratoPrincipal,
-  milanesaImg,
-  omeleteImg,
-  fileParmegiana,
-  frangoGrelhado,
-  carreImg,
-  batataMaluca,
-  kuatImg,
-  bifeAcebolado,
-  sukitaImg
-} from '../assets/images';
-
+	batataMaluca,
+	batataP,
+	bifeAcebolado,
+	carreImg,
+	cocaImg,
+	fileParmegiana,
+	frangoGrelhado,
+	guaranaImg,
+	guaravitaImg,
+	linguicaAcebolada,
+	milanesaImg,
+	omeleteImg,
+	panquecaImg,
+	pratoPrincipal,
+	sukitaImg,
+	toscanaImg,
+} from "../assets/images";
 
 export const mockData = {
 	dishOfTheDay: {
 		id: 101,
 		name: "Picanho de Carne",
 		description: "Arroz e carne com batata",
-		price: 15.9,
-		image: pratoPrincipal
+		price: 23,
+		image: pratoPrincipal,
 	},
 	products: [
 		{
 			id: 1,
-			category: "Quentinhas",
+			category: "Marmitas",
 			name: "Bife acebolado com Fritas",
 			description: "Arroz, Feijão, Macarrão, Farofa, Salada Verde.",
 			price: 23,
-			image: bifeAcebolado
+			image: bifeAcebolado,
 		},
 		{
 			id: 2,
-			category: "Quentinhas",
+			category: "Marmitas",
 			name: "Frango Grelhado",
 			description: "Arroz, Feijão, Macarrão, Farofa, Salada Verde.",
 			price: 12,
-			image: frangoGrelhado
+			image: frangoGrelhado,
 		},
 		{
 			id: 3,
-			category: "Quentinhas",
+			category: "Marmitas",
 			name: "Frango a Parmegiana",
 			description: "Arroz, Feijão, Macarrão, Farofa, Salada Verde.",
 			price: 16,
-			image: fileParmegiana
+			image: fileParmegiana,
 		},
 		{
 			id: 7,
-			category: "Quentinhas",
+			category: "Marmitas",
 			name: "Frango a Milanesa",
 			description: "Arroz, Feijão, Macarrão, Farofa, Salada Verde.",
-			price: 16,
-			image: milanesaImg
+			price: 15,
+			image: milanesaImg,
 		},
 		{
 			id: 8,
-			category: "Quentinhas",
+			category: "Marmitas",
 			name: "Linguiça Acebolada",
 			description: "Arroz, Feijão, Macarrão, Farofa, Salada Verde.",
-			price: 16,
-			image: linguicaAcebolada
+			price: 12,
+			image: linguicaAcebolada,
 		},
 		{
 			id: 9,
-			category: "Quentinhas",
+			category: "Marmitas",
 			name: "Carré",
 			description: "Arroz, Feijão, Macarrão, Farofa, Salada Verde.",
-			price: 16,
-			image: carreImg
+			price: 15,
+			image: carreImg,
 		},
 		{
 			id: 10,
-			category: "Quentinhas",
+			category: "Marmitas",
 			name: "Omelete",
 			description: "Arroz, Feijão, Macarrão, Farofa, Salada Verde.",
 			price: 12,
-			image: omeleteImg
+			image: omeleteImg,
 		},
 		{
 			id: 11,
-			category: "Quentinhas",
+			category: "Marmitas",
 			name: "Linguiça Toscana",
 			description: "Arroz, Feijão, Macarrão, Farofa, Salada Verde.",
 			price: 12,
@@ -95,7 +96,7 @@ export const mockData = {
 			name: "Batata Maluca G",
 			description: "Batata, Calabresa, Queijo Ralado...",
 			price: 22,
-			image: batataMaluca
+			image: batataMaluca,
 		},
 		{
 			id: 13,
@@ -103,31 +104,47 @@ export const mockData = {
 			name: "Batata Maluca M",
 			description: "Batata, Calabresa e Bacon.",
 			price: 18,
-			image: batataP
+			image: batataP,
+		},
+		{
+			id: 14,
+			category: "Marmitas",
+			name: "Panqueca",
+			description: "1 unidade de panqueca de Carne ou Frango.",
+			price: 3.5,
+			image: panquecaImg,
 		},
 		{
 			id: 4,
 			category: "Bebidas",
 			name: "Sukita",
 			description: "2L",
-			price: 6.0,
-			image: sukitaImg
+			price: 7.0,
+			image: sukitaImg,
 		},
 		{
-			id: 5,
+			id: 15,
 			category: "Bebidas",
-			name: "Sukita Uva",
-			description: "@l",
-			price: 6.0,
-			image: sukitaUva
-		},
-		{
-			id: 6,
-			category: "Bebidas",
-			name: "Kuat",
+			name: "Coca-Cola",
 			description: "2L",
-			price: 4.0,
-			image: kuatImg
+			price: 9.0,
+			image: cocaImg,
+		},
+		{
+			id: 16,
+			category: "Bebidas",
+			name: "Guaraná Antactica",
+			description: "2L",
+			price: 7.0,
+			image: guaranaImg,
+		},
+		{
+			id: 17,
+			category: "Bebidas",
+			name: "Guaravita",
+			description: "290ml",
+			price: 2.0,
+			image: guaravitaImg,
 		},
 	],
 };

@@ -1,5 +1,5 @@
-import styled from 'styled-components';
-import { scaleIn } from '../../styles/GlobalStyle';
+import styled from "styled-components";
+import { scaleIn } from "../../styles/GlobalStyle";
 
 export const Overlay = styled.div`
   position: fixed;
@@ -92,15 +92,15 @@ export const Label = styled.label`
 export const Input = styled.input`
   width: 100%;
   padding: 0.8rem 1rem;
-  border: 1px solid ${props => props.$isInvalid ? '#e74c3c' : '#ddd'};
+  border: 1px solid ${(props) => (props.$isInvalid ? "#e74c3c" : "#ddd")};
   border-radius: 8px;
   font-size: 1rem;
   transition: border-color 0.2s, box-shadow 0.2s;
 
   &:focus {
     outline: none;
-    border-color: ${props => props.$isInvalid ? '#e74c3c' : '#e67e22'};
-    box-shadow: 0 0 0 2px ${props => props.$isInvalid ? 'rgba(231, 76, 60, 0.2)' : 'rgba(230, 126, 34, 0.2)'};
+    border-color: ${(props) => (props.$isInvalid ? "#e74c3c" : "#e67e22")};
+    box-shadow: 0 0 0 2px ${(props) => (props.$isInvalid ? "rgba(231, 76, 60, 0.2)" : "rgba(230, 126, 34, 0.2)")};
   }
   &::placeholder {
     color: #aaa;
@@ -112,7 +112,7 @@ export const FeeMessage = styled.p`
   font-size: 0.9rem;
   font-weight: 500;
   margin-top: 0.5rem;
-  color: ${props => props.type === 'delivery' ? '#2a9d8f' : '#c0392b'};
+  color: ${(props) => (props.type === "delivery" ? "#2a9d8f" : "#c0392b")};
 `;
 
 export const OptionsGroup = styled.div`
@@ -135,9 +135,9 @@ export const OptionButton = styled.button`
   gap: 0.5rem;
   transition: all 0.2s;
 
-  background-color: ${props => props.$isActive ? '#e67e22' : '#f0f2f5'};
-  color: ${props => props.$isActive ? 'white' : '#333'};
-  border: 2px solid ${props => props.$isActive ? '#e67e22' : '#f0f2f5'};
+  background-color: ${(props) => (props.$isActive ? "#e67e22" : "#f0f2f5")};
+  color: ${(props) => (props.$isActive ? "white" : "#333")};
+  border: 2px solid ${(props) => (props.$isActive ? "#e67e22" : "#f0f2f5")};
 `;
 
 export const Footer = styled.div`
@@ -163,7 +163,7 @@ export const FinalizeButton = styled.button`
   font-weight: 600;
   border-radius: 8px;
   cursor: pointer;
-  background-color: #2a9d8f;
+  background-color: #e67e22;
   color: white;
   border: none;
   transition: background-color 0.2s;

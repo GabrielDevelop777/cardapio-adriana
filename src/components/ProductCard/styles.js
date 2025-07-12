@@ -19,7 +19,6 @@ export const Card = styled.div`
 export const CardImage = styled.img`
   width: 100%;
   height: 160px;
-  /* CORREÇÃO: Aplica o estilo condicionalmente */
   object-fit: ${(props) => (props.$isBeverage ? "contain" : "cover")};
   padding: ${(props) => (props.$isBeverage ? "0.5rem" : "0")};
 `;
@@ -72,9 +71,19 @@ export const AddButton = styled.button`
   align-items: center;
   gap: 0.5rem;
   background-size: 200% 100%;
+  white-space: nowrap; // Impede que o texto quebre
 
   &:hover {
     transform: scale(1.05);
     box-shadow: 0 4px 15px rgba(230, 126, 34, 0.4);
+  }
+
+  &:disabled {
+    background: #bdc3c7;
+    cursor: not-allowed;
+    box-shadow: none;
+    transform: none;
+    font-size: 0.8rem; // Ajusta o tamanho da fonte para o texto maior
+    padding: 0.6rem 0.8rem; // Ajusta o padding para o texto maior
   }
 `;

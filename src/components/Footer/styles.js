@@ -40,6 +40,23 @@ export const SocialLink = styled.a`
   }
 `;
 
+// Novo estilo para o container do mapa
+export const MapContainer = styled.div`
+  width: 100%;
+  max-width: 800px;
+  height: 300px;
+  border-radius: 12px;
+  overflow: hidden;
+  margin: 2rem 0;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+
+  iframe {
+    width: 100%;
+    height: 100%;
+    border: 0;
+  }
+`;
+
 export const Copyright = styled.p`
   font-size: 0.9rem;
   color: #bdc3c7;
@@ -47,5 +64,5 @@ export const Copyright = styled.p`
   border-top: 1px solid #34495e;
   padding-top: 1.5rem;
   width: 100%;
-  max-width: 600px;
+  max-width: 800px;
 `;
