@@ -1,45 +1,32 @@
-import { useState } from "react";
+import React from "react";
 import {
 	AddButton,
-	AddonButton,
 	Card,
 	CardBody,
 	CardFooter,
 	CardImage,
 	Description,
-	MixCheckbox,
-	MixLabel,
-	MixOptionContainer,
 	Price,
 	Title,
 } from "./styles";
 
 const ProductCard = ({
 	product,
-	onAddToCart,
-	onAddAddon,
 	onOpenQuantityModal,
+	onOpenAddonModal,
 	isStoreOpen,
 	countdown,
 }) => {
-	const [isMixed, setIsMixed] = useState(false);
 	const isBeverage = product.category === "Bebidas";
 
 	const handleAddClick = () => {
 		if (product.requiresQuantityModal) {
 			onOpenQuantityModal(product);
-			return;
-		}
-
-		if (product.mixOption && isMixed) {
-			const mixedProduct = {
-				...product,
-				id: `${product.id}-mixed`,
-				name: `${product.name} (Misto com Toscana)`,
-			};
-			onAddToCart(mixedProduct);
+		} else if (product.requiresAddonModal) {
+			onOpenAddonModal(product);
 		} else {
-			onAddToCart(product);
+			// Para produtos simples, chama a função de adicionar diretamente
+			onOpenAddonModal(product); // Reutiliza a lógica para adicionar sem addon
 		}
 	};
 
@@ -53,33 +40,11 @@ const ProductCard = ({
 			<CardBody>
 				<Title>{product.name}</Title>
 				<Description>{product.description}</Description>
-
-				{product.mixOption && (
-					<MixOptionContainer>
-						<MixCheckbox
-							type="checkbox"
-							id={`mix-${product.id}`}
-							checked={isMixed}
-							onChange={(e) => setIsMixed(e.target.checked)}
-							disabled={!isStoreOpen}
-						/>
-						<MixLabel htmlFor={`mix-${product.id}`}>
-							Misturar com Toscana
-						</MixLabel>
-					</MixOptionContainer>
-				)}
-
 				<CardFooter>
 					<Price>{`R$ ${product.price.toFixed(2).replace(".", ",")}`}</Price>
 					<AddButton onClick={handleAddClick} disabled={!isStoreOpen}>
 						{isStoreOpen ? "Adicionar" : `Abre em ${countdown}`}
 					</AddButton>
-					{product.addon && isStoreOpen && (
-						<AddonButton onClick={() => onAddAddon(product)}>
-							+ {product.addon.name} (R${" "}
-							{product.addon.price.toFixed(2).replace(".", ",")})
-						</AddonButton>
-					)}
 				</CardFooter>
 			</CardBody>
 		</Card>

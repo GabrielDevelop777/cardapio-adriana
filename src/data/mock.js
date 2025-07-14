@@ -14,6 +14,7 @@ import {
 	mistaImg,
 	moelaImg,
 	omeleteImg,
+	pankecaImg,
 	panquecaImg,
 	sukitaImg,
 	toscanaImg,
@@ -22,29 +23,52 @@ import {
 export const mockData = {
 	dishOfTheDay: {
 		id: 101,
-		name: "Angu com Moela",
-		// description: "Acompanha Arroz, Feijão, Macarrão, Farofa e Salada.",
-		price: 15,
-		image: moelaImg,
+		name: "Panqueca Sabores",
+		description: "Acompanha Arroz, Feijão, Macarrão, Farofa e Salada.",
+		price: 16,
+		image: pankecaImg,
+		requiresAddonModal: true,
+		addon: {
+			question: "Deseja adicionar Porção de Batata por mais R$ 5,00?",
+			name: "com Porção de Batata",
+			price: 5.0,
+			confirmText: "Sim, adicionar",
+			denyText: "Não, obrigado",
+		},
 	},
 	products: [
 		// --- PORÇÕES ---
 		{
 			id: 17,
 			category: "Porções",
-			name: "Porção Mista com Guaravita",
+			name: "Porção Mista",
 			description: "Frango Empanado, Mandioca e linguiça.",
-			price: 17,
+			price: 15,
 			image: mistaImg,
+			requiresAddonModal: true,
+			addon: {
+				question: "Deseja adicionar o Guaravita por mais R$ 2,00?",
+				name: "com Guaravita",
+				price: 2.0,
+				confirmText: "Sim, com Guaravita",
+				denyText: "Não, obrigado",
+			},
 		},
 		{
 			id: 1,
 			category: "Porções",
 			name: "Frango Empanado",
 			description: "Porção de frango empanado.",
-			price: 10,
+			price: 15,
 			image: kfcImg,
-			mixOption: true, // Flag para a opção de mistura
+			requiresAddonModal: true,
+			addon: {
+				question: "Deseja que seja misto com linguiça?",
+				name: "(Misto com Toscana)",
+				price: 0, // Sem custo adicional para misturar
+				confirmText: "Sim, misto",
+				denyText: "Apenas Frango",
+			},
 		},
 		{
 			id: 2,
@@ -69,7 +93,7 @@ export const mockData = {
 			description: "Escolha o sabor e a quantidade.",
 			price: 3.5,
 			image: panquecaImg,
-			requiresQuantityModal: true, // Flag para abrir o modal
+			requiresQuantityModal: true,
 		},
 		// --- MARMITAS ---
 		{
@@ -95,7 +119,14 @@ export const mockData = {
 			description: "Acompanha Arroz, Feijão, Macarrão, Farofa e Salada.",
 			price: 16,
 			image: fileParmegiana,
-			addon: { name: "Porção de Batata", price: 5.0 },
+			requiresAddonModal: true,
+			addon: {
+				question: "Deseja adicionar Porção de Batata por mais R$ 5,00?",
+				name: "com Porção de Batata",
+				price: 5.0,
+				confirmText: "Sim, com Batata",
+				denyText: "Não, obrigado",
+			},
 		},
 		{
 			id: 8,
@@ -128,7 +159,14 @@ export const mockData = {
 			description: "Acompanha Arroz, Feijão, Macarrão, Farofa e Salada.",
 			price: 12,
 			image: omeleteImg,
-			addon: { name: "Porção de Batata", price: 5.0 },
+			requiresAddonModal: true,
+			addon: {
+				question: "Deseja adicionar Porção de Batata por mais R$ 5,00?",
+				name: "com Porção de Batata",
+				price: 5.0,
+				confirmText: "Sim, com Batata",
+				denyText: "Não, obrigado",
+			},
 		},
 		{
 			id: 12,
@@ -137,7 +175,14 @@ export const mockData = {
 			description: "Acompanha Arroz, Feijão, Macarrão, Farofa e Salada.",
 			price: 12,
 			image: toscanaImg,
-			addon: { name: "Porção de Batata", price: 5.0 },
+			requiresAddonModal: true,
+			addon: {
+				question: "Deseja adicionar Porção de Batata por mais R$ 5,00?",
+				name: "com Porção de Batata",
+				price: 5.0,
+				confirmText: "Sim, com Batata",
+				denyText: "Não, obrigado",
+			},
 		},
 		// --- BEBIDAS ---
 		{

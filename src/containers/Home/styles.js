@@ -2,7 +2,6 @@ import styled from "styled-components";
 import { fadeIn } from "../../styles/GlobalStyle";
 
 export const AppContainer = styled.div`
-  /* Animação de fade-in para o conteúdo principal */
   animation: ${fadeIn} 0.8s ease-in;
 `;
 
@@ -41,7 +40,7 @@ export const StatusBadge = styled.div`
   font-family: 'Montserrat', sans-serif;
   font-size: 0.9rem;
   font-weight: 600;
-  margin-top: 1rem;
+  margin-top: 1.5rem;
   background-color: ${(props) => (props.$isOpen ? "#2ecc71" : "#e74c3c")};
   color: white;
   transition: background-color 0.3s;

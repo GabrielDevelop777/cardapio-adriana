@@ -1,10 +1,11 @@
 import React, { useState, useMemo, useEffect, useCallback } from "react";
 
+import AddonModal from "../../components/AddonModal";
 import CheckoutDrawer from "../../components/CheckoutDrawer";
 import DishOfTheDayCard from "../../components/DishOfTheDayCard";
+import FlavorModal from "../../components/FlavorModal";
 import FloatingCartButton from "../../components/FloatingCartButton";
 import Footer from "../../components/Footer";
-// Importando componentes e dados
 import Loader from "../../components/Loader";
 import PixModal from "../../components/PixModal";
 import ProductCard from "../../components/ProductCard";
@@ -45,31 +46,27 @@ export default function Home() {
 	const [isQuantityModalOpen, setIsQuantityModalOpen] = useState(false);
 	const [selectedProductForQuantity, setSelectedProductForQuantity] =
 		useState(null);
+	const [isAddonModalOpen, setIsAddonModalOpen] = useState(false);
+	const [selectedProductForAddon, setSelectedProductForAddon] = useState(null);
+	const [isFlavorModalOpen, setIsFlavorModalOpen] = useState(false);
+	const [productWithAddon, setProductWithAddon] = useState(null);
 	const countdown = useCountdown(11);
 
 	useEffect(() => {
 		const handleLoad = () => {
 			setIsFadingOut(true);
-			setTimeout(() => {
-				setIsLoading(false);
-			}, 1000); // Duração da animação de fade-out
+			setTimeout(() => setIsLoading(false), 500);
 		};
-
-		// Se a janela já carregou, executa imediatamente.
-		if (document.readyState === "complete") {
-			handleLoad();
-		} else {
-			window.addEventListener("load", handleLoad);
-			// Limpa o event listener se o componente for desmontado
-			return () => window.removeEventListener("load", handleLoad);
-		}
+		if (document.readyState === "complete") handleLoad();
+		else window.addEventListener("load", handleLoad);
+		return () => window.removeEventListener("load", handleLoad);
 	}, []);
 
 	useEffect(() => {
 		const checkStoreStatus = () => {
 			const now = new Date();
 			const currentHour = now.getHours();
-			const isOpen = currentHour >= 11 && currentHour < 15;
+			const isOpen = currentHour >= 11 && currentHour < 23;
 			setIsStoreOpen(isOpen);
 		};
 		checkStoreStatus();
@@ -79,15 +76,23 @@ export default function Home() {
 
 	useEffect(() => {
 		const body = document.body;
-		if (isDrawerOpen || isPixModalOpen || isQuantityModalOpen) {
-			body.style.overflow = "hidden";
-		} else {
-			body.style.overflow = "auto";
-		}
+		const isAnyModalOpen =
+			isDrawerOpen ||
+			isPixModalOpen ||
+			isQuantityModalOpen ||
+			isAddonModalOpen ||
+			isFlavorModalOpen;
+		body.style.overflow = isAnyModalOpen ? "hidden" : "auto";
 		return () => {
 			body.style.overflow = "auto";
 		};
-	}, [isDrawerOpen, isPixModalOpen, isQuantityModalOpen]);
+	}, [
+		isDrawerOpen,
+		isPixModalOpen,
+		isQuantityModalOpen,
+		isAddonModalOpen,
+		isFlavorModalOpen,
+	]);
 
 	const showToast = (message, duration = 3000, type = "info") => {
 		const id = Date.now() + Math.random();
@@ -98,7 +103,6 @@ export default function Home() {
 		setToasts((prev) => prev.filter((toast) => toast.id !== id));
 	}, []);
 
-	// ... (outras funções permanecem as mesmas)
 	const handleUpdateQuantity = (productId, newQuantity) => {
 		if (newQuantity <= 0) {
 			setCart((prev) => prev.filter((item) => item.id !== productId));
@@ -137,20 +141,6 @@ export default function Home() {
 		showToast(`${finalProduct.name} adicionado!`, 2000, "success");
 	};
 
-	const handleAddAddon = (product) => {
-		if (!isStoreOpen) {
-			showToast("Desculpe, estamos fechados no momento.", 3000, "error");
-			return;
-		}
-		const comboProduct = {
-			...product,
-			id: `${product.id}-addon`,
-			name: `${product.name} com ${product.addon.name}`,
-			price: product.price + product.addon.price,
-		};
-		handleAddToCart(comboProduct);
-	};
-
 	const handleOpenQuantityModal = (product) => {
 		if (!isStoreOpen) {
 			showToast("Desculpe, estamos fechados no momento.", 3000, "error");
@@ -158,6 +148,43 @@ export default function Home() {
 		}
 		setSelectedProductForQuantity(product);
 		setIsQuantityModalOpen(true);
+	};
+
+	const handleOpenAddonModal = (product) => {
+		if (!isStoreOpen) {
+			showToast("Desculpe, estamos fechados no momento.", 3000, "error");
+			return;
+		}
+		// Se o produto não tem um addon definido, adiciona direto
+		if (!product.addon) {
+			handleAddToCart(product);
+			return;
+		}
+		setSelectedProductForAddon(product);
+		setIsAddonModalOpen(true);
+	};
+
+	const handleConfirmAddon = (product, withAddon) => {
+		const productToProcess = { ...product };
+		if (withAddon) {
+			productToProcess.name = `${product.name} ${product.addon.name}`;
+			productToProcess.price += product.addon.price;
+			productToProcess.id = `${product.id}-addon`;
+		}
+
+		if (product.name.toLowerCase().includes("panqueca")) {
+			setProductWithAddon(productToProcess);
+			setIsFlavorModalOpen(true);
+		} else {
+			handleAddToCart(productToProcess);
+		}
+	};
+
+	const handleConfirmFlavor = (flavor) => {
+		if (productWithAddon) {
+			handleAddToCart(productWithAddon, 1, flavor);
+			setProductWithAddon(null);
+		}
 	};
 
 	const cartTotal = useMemo(
@@ -226,7 +253,7 @@ export default function Home() {
 
 			<Header>
 				<HeaderTitle>Delicias da Dri</HeaderTitle>
-				<HeaderSlogan>"Aqui, é cada sabor no seu lugar!"</HeaderSlogan>
+				<HeaderSlogan>Aqui, cada sabor no seu lugar!</HeaderSlogan>
 				<StatusBadge $isOpen={isStoreOpen}>
 					{isStoreOpen ? "Aberto" : "Fechado"}
 				</StatusBadge>
@@ -237,7 +264,7 @@ export default function Home() {
 					<DishOfTheDayTitle>Prato do Dia</DishOfTheDayTitle>
 					<DishOfTheDayCard
 						product={mockData.dishOfTheDay}
-						onAddToCart={handleAddToCart}
+						onOpenAddonModal={handleOpenAddonModal}
 						isStoreOpen={isStoreOpen}
 						countdown={countdown}
 					/>
@@ -252,7 +279,7 @@ export default function Home() {
 									key={product.id}
 									product={product}
 									onAddToCart={handleAddToCart}
-									onAddAddon={handleAddAddon}
+									onOpenAddonModal={handleOpenAddonModal}
 									onOpenQuantityModal={handleOpenQuantityModal}
 									isStoreOpen={isStoreOpen}
 									countdown={countdown}
@@ -273,6 +300,19 @@ export default function Home() {
 				onClose={() => setIsQuantityModalOpen(false)}
 				product={selectedProductForQuantity}
 				onConfirm={handleAddToCart}
+			/>
+
+			<AddonModal
+				isOpen={isAddonModalOpen}
+				onClose={() => setIsAddonModalOpen(false)}
+				product={selectedProductForAddon}
+				onConfirm={handleConfirmAddon}
+			/>
+
+			<FlavorModal
+				isOpen={isFlavorModalOpen}
+				onClose={() => setIsFlavorModalOpen(false)}
+				onConfirm={handleConfirmFlavor}
 			/>
 
 			<CheckoutDrawer

@@ -15,6 +15,7 @@ import mistaImg from "./mista.png";
 import moelaImg from "./moela.png";
 import omeleteImg from "./omelete.png";
 import panquecaImg from "./panqueca.jpeg";
+import pankecaImg from "./panqueca.png";
 import picadinhoImg from "./picadinho.jpg";
 import pratoPrincipal from "./prato-principal.jpg";
 import sukitaUva from "./sukita-uva.webp";
@@ -26,6 +27,7 @@ export {
 	batataP,
 	moelaImg,
 	mistaImg,
+	pankecaImg,
 	kfcImg,
 	picadinhoImg,
 	guaravitaImg,
