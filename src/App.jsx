@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useMemo, useState } from "react";
+import React, { useState, useMemo, useEffect, useCallback } from "react";
 import styled from "styled-components";
 
 import CheckoutDrawer from "./components/CheckoutDrawer";
@@ -15,74 +15,41 @@ import useCountdown from "./hooks/useCountdown";
 const AppContainer = styled.div``;
 const Header = styled.header`
   background: linear-gradient(90deg, #e67e22, #f39c12);
-  padding: 2rem 0;
-  text-align: center;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-  color: white;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  padding: 2rem 0; text-align: center; box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  color: white; display: flex; flex-direction: column;
+  justify-content: center; align-items: center;
 `;
 const HeaderTitle = styled.h1`
-  font-family: 'Great Vibes', cursive;
-  font-size: 4.5rem;
-  font-weight: 400;
-  text-shadow: 1px 1px 4px rgba(0,0,0,0.25);
-  margin: 0;
+  font-family: 'Great Vibes', cursive; font-size: 4.5rem; font-weight: 400;
+  text-shadow: 1px 1px 4px rgba(0,0,0,0.25); margin: 0;
 `;
 const HeaderSlogan = styled.p`
-  font-family: 'Montserrat', sans-serif;
-  font-size: 1.1rem;
-  margin-top: 0.5rem;
-  letter-spacing: 1px;
-  opacity: 0.9;
+  font-family: 'Montserrat', sans-serif; font-size: 1.1rem; margin-top: 0.5rem;
+  letter-spacing: 1px; opacity: 0.9;
 `;
 const StatusBadge = styled.div`
-  display: inline-block;
-  padding: 0.4rem 1rem;
-  border-radius: 20px;
-  font-family: 'Montserrat', sans-serif;
-  font-size: 0.9rem;
-  font-weight: 600;
-  margin-top: 1rem;
-  background-color: ${(props) => (props.$isOpen ? "#2ecc71" : "#e74c3c")};
-  color: white;
-  transition: background-color 0.3s;
+  display: inline-block; padding: 0.4rem 1rem; border-radius: 20px;
+  font-family: 'Montserrat', sans-serif; font-size: 0.9rem; font-weight: 600;
+  margin-top: 1rem; background-color: ${(props) => (props.$isOpen ? "#2ecc71" : "#e74c3c")};
+  color: white; transition: background-color 0.3s;
   box-shadow: 0 2px 5px rgba(0,0,0,0.15);
 `;
 const MainContent = styled.main`
-  padding: 2.5rem;
-  max-width: 1200px;
-  margin: 0 auto;
+  padding: 2.5rem; max-width: 1200px; margin: 0 auto;
 `;
 const MenuSection = styled.section`
   margin-bottom: 3.5rem;
 `;
 const SectionTitle = styled.h2`
-  font-size: 2rem;
-  font-weight: 700;
-  color: #333;
-  margin-bottom: 1.5rem;
-  padding-bottom: 0.5rem;
-  border-bottom: 2px solid #e67e22;
+  font-size: 2rem; font-weight: 700; color: #333; margin-bottom: 1.5rem;
+  padding-bottom: 0.5rem; border-bottom: 2px solid #e67e22;
 `;
 const DishOfTheDayTitle = styled(SectionTitle)`
-  text-align: center;
-  border-bottom: none;
-  font-size: 2.5rem;
-  color: #333;
-  position: relative;
-  margin-bottom: 2rem;
-
+  text-align: center; border-bottom: none; font-size: 2.5rem; color: #333;
+  position: relative; margin-bottom: 2rem;
   &::after {
-    content: '';
-    display: block;
-    width: 100px;
-    height: 4px;
-    background: #e67e22;
-    margin: 0.75rem auto 0;
-    border-radius: 2px;
+    content: ''; display: block; width: 100px; height: 4px;
+    background: #e67e22; margin: 0.75rem auto 0; border-radius: 2px;
   }
 `;
 const ProductList = styled.div`
@@ -91,16 +58,24 @@ const ProductList = styled.div`
   gap: 1.5rem;
 `;
 
+// Novo container para gerenciar as notificações
+const ToastManager = styled.div`
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 2000;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: flex-end;
+`;
+
 export default function App() {
 	const [cart, setCart] = useState([]);
 	const [isPixModalOpen, setPixModalOpen] = useState(false);
 	const [pixTotal, setPixTotal] = useState(0);
 	const [isDrawerOpen, setDrawerOpen] = useState(false);
-	const [toast, setToast] = useState({
-		show: false,
-		message: "",
-		type: "info",
-	});
+	const [toasts, setToasts] = useState([]); // Estado agora é um array
 	const [formData, setFormData] = useState({
 		name: "",
 		phone: "",
@@ -118,7 +93,7 @@ export default function App() {
 		const checkStoreStatus = () => {
 			const now = new Date();
 			const currentHour = now.getHours();
-			const isOpen = currentHour >= 11 && currentHour < 23;
+			const isOpen = currentHour >= 11 && currentHour < 15;
 			setIsStoreOpen(isOpen);
 		};
 		checkStoreStatus();
@@ -138,12 +113,13 @@ export default function App() {
 		};
 	}, [isDrawerOpen, isPixModalOpen, isQuantityModalOpen]);
 
-	const showToast = (message, duration = 2000, type = "info") => {
-		setToast({ show: true, message, duration, type });
+	const showToast = (message, duration = 3000, type = "info") => {
+		const id = Date.now() + Math.random();
+		setToasts((prev) => [...prev, { id, message, duration, type }]);
 	};
 
-	const handleCloseToast = useCallback(() => {
-		setToast((prev) => ({ ...prev, show: false }));
+	const handleCloseToast = useCallback((id) => {
+		setToasts((prev) => prev.filter((toast) => toast.id !== id));
 	}, []);
 
 	const handleUpdateQuantity = (productId, newQuantity) => {
@@ -158,23 +134,30 @@ export default function App() {
 		}
 	};
 
-	const handleAddToCart = (productToAdd, quantity = 1) => {
+	const handleAddToCart = (productToAdd, quantity = 1, flavor = null) => {
 		if (!isStoreOpen) {
 			showToast("Desculpe, estamos fechados no momento.", 3000, "error");
 			return;
 		}
+
+		const finalProduct = { ...productToAdd };
+		if (flavor) {
+			finalProduct.name = `${productToAdd.name} de ${flavor}`;
+			finalProduct.id = `${productToAdd.id}-${flavor.toLowerCase()}`;
+		}
+
 		setCart((prev) => {
-			const existing = prev.find((item) => item.id === productToAdd.id);
+			const existing = prev.find((item) => item.id === finalProduct.id);
 			if (existing) {
 				return prev.map((item) =>
-					item.id === productToAdd.id
+					item.id === finalProduct.id
 						? { ...item, quantity: item.quantity + quantity }
 						: item,
 				);
 			}
-			return [...prev, { ...productToAdd, quantity }];
+			return [...prev, { ...finalProduct, quantity }];
 		});
-		showToast(`${productToAdd.name} adicionado!`, 2000, "success");
+		showToast(`${finalProduct.name} adicionado!`, 2000, "success");
 	};
 
 	const handleAddAddon = (product) => {
@@ -247,14 +230,19 @@ export default function App() {
 
 	return (
 		<AppContainer>
-			{toast.show && (
-				<Toast
-					message={toast.message}
-					duration={toast.duration}
-					type={toast.type}
-					onClose={handleCloseToast}
-				/>
-			)}
+			<ToastManager>
+				{toasts.map((toast) => (
+					<Toast
+						key={toast.id}
+						id={toast.id}
+						message={toast.message}
+						duration={toast.duration}
+						type={toast.type}
+						onClose={handleCloseToast}
+					/>
+				))}
+			</ToastManager>
+
 			<Header>
 				<HeaderTitle>Delicias da Dri</HeaderTitle>
 				<HeaderSlogan>"Aqui, é cada sabor no seu lugar!"</HeaderSlogan>

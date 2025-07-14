@@ -2,7 +2,7 @@ import { CheckCircle, Info, XCircle } from "lucide-react";
 import React, { useEffect, useState } from "react";
 import { ToastContainer } from "./styles";
 
-const Toast = ({ message, duration = 3000, onClose, type = "info" }) => {
+const Toast = ({ id, message, duration = 3000, onClose, type = "info" }) => {
 	const [isExiting, setIsExiting] = useState(false);
 
 	useEffect(() => {
@@ -17,7 +17,7 @@ const Toast = ({ message, duration = 3000, onClose, type = "info" }) => {
 
 	const handleAnimationEnd = () => {
 		if (isExiting) {
-			onClose();
+			onClose(id); // Passa o ID para o pai remover este toast específico
 		}
 	};
 

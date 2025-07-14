@@ -4,6 +4,10 @@ import {
 	ConfirmButton,
 	ControlButton,
 	Controls,
+	FlavorButton,
+	FlavorOptions,
+	FlavorSection,
+	FlavorTitle,
 	ModalContainer,
 	Overlay,
 	QuantityDisplay,
@@ -13,11 +17,12 @@ import {
 
 const QuantityModal = ({ isOpen, onClose, product, onConfirm }) => {
 	const [quantity, setQuantity] = useState(1);
+	const [flavor, setFlavor] = useState("Carne"); // Sabor padrão
 
 	if (!isOpen) return null;
 
 	const handleConfirm = () => {
-		onConfirm(product, quantity);
+		onConfirm(product, quantity, flavor);
 		onClose();
 	};
 
@@ -25,7 +30,26 @@ const QuantityModal = ({ isOpen, onClose, product, onConfirm }) => {
 		<Overlay onClick={onClose}>
 			<ModalContainer onClick={(e) => e.stopPropagation()}>
 				<Title>{product.name}</Title>
-				<Subtitle>Quantas unidades você deseja?</Subtitle>
+				<Subtitle>Escolha o sabor e a quantidade</Subtitle>
+
+				<FlavorSection>
+					<FlavorTitle>Sabor da Panqueca</FlavorTitle>
+					<FlavorOptions>
+						<FlavorButton
+							$isActive={flavor === "Carne"}
+							onClick={() => setFlavor("Carne")}
+						>
+							Carne
+						</FlavorButton>
+						<FlavorButton
+							$isActive={flavor === "Frango"}
+							onClick={() => setFlavor("Frango")}
+						>
+							Frango
+						</FlavorButton>
+					</FlavorOptions>
+				</FlavorSection>
+
 				<Controls>
 					<ControlButton onClick={() => setQuantity((q) => Math.max(1, q - 1))}>
 						<Minus size={24} />

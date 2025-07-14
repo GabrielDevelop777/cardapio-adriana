@@ -20,7 +20,7 @@ import {
 
 export const mockData = {
 	dishOfTheDay: {
-		id: 101, // ID do prato do dia pode ser mantido separado
+		id: 101,
 		name: "Angu com Moela",
 		// description: "Acompanha Arroz, Feijão, Macarrão, Farofa e Salada.",
 		price: 15,
@@ -33,9 +33,9 @@ export const mockData = {
 			category: "Porções",
 			name: "Frango Empanado",
 			description: "Porção de frango empanado.",
-			price: 14,
+			price: 3.5,
 			image: kfcImg,
-			mixOption: true,
+			mixOption: true, // Flag para a opção de mistura
 		},
 		{
 			id: 2,
@@ -57,10 +57,10 @@ export const mockData = {
 			id: 4,
 			category: "Porções",
 			name: "Panqueca",
-			description: "1 unidade de panqueca de Carne ou Frango.",
+			description: "Escolha o sabor e a quantidade.",
 			price: 3.5,
 			image: panquecaImg,
-			requiresQuantityModal: true,
+			requiresQuantityModal: true, // Flag para abrir o modal
 		},
 		// --- MARMITAS ---
 		{
@@ -95,7 +95,6 @@ export const mockData = {
 			description: "Acompanha Arroz, Feijão, Macarrão, Farofa e Salada.",
 			price: 15,
 			image: milanesaImg,
-			addon: { name: "Porção de Batata", price: 5.0 },
 		},
 		{
 			id: 9,

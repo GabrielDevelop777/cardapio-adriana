@@ -3,10 +3,7 @@ import { scaleIn } from "../../styles/GlobalStyle";
 
 export const Overlay = styled.div`
   position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
+  top: 0; left: 0; right: 0; bottom: 0;
   background-color: rgba(0, 0, 0, 0.6);
   z-index: 1000;
   display: flex;
@@ -19,7 +16,7 @@ export const ModalContainer = styled.div`
   padding: 2rem;
   border-radius: 16px;
   width: 90%;
-  max-width: 350px;
+  max-width: 380px;
   text-align: center;
   animation: ${scaleIn} 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
 `;
@@ -33,6 +30,39 @@ export const Title = styled.h3`
 export const Subtitle = styled.p`
   color: #666;
   margin-bottom: 1.5rem;
+`;
+
+export const FlavorSection = styled.div`
+  margin-bottom: 1.5rem;
+  text-align: left;
+`;
+
+export const FlavorTitle = styled.h4`
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #555;
+  margin-bottom: 0.75rem;
+  text-align: center;
+`;
+
+export const FlavorOptions = styled.div`
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+`;
+
+export const FlavorButton = styled.button`
+  flex: 1;
+  padding: 0.75rem;
+  font-size: 1rem;
+  font-weight: 500;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s;
+  
+  background-color: ${(props) => (props.$isActive ? "#e67e22" : "#f0f2f5")};
+  color: ${(props) => (props.$isActive ? "white" : "#333")};
+  border: 2px solid ${(props) => (props.$isActive ? "#e67e22" : "#f0f2f5")};
 `;
 
 export const Controls = styled.div`

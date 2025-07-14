@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import {
 	AddButton,
 	AddonButton,
@@ -31,11 +31,10 @@ const ProductCard = ({
 			return;
 		}
 
-		// Se for o frango com opção de mistura, cria um produto modificado
 		if (product.mixOption && isMixed) {
 			const mixedProduct = {
 				...product,
-				id: `${product.id}-mixed`, // ID único para o item misto
+				id: `${product.id}-mixed`,
 				name: `${product.name} (Misto com Toscana)`,
 			};
 			onAddToCart(mixedProduct);
@@ -62,6 +61,7 @@ const ProductCard = ({
 							id={`mix-${product.id}`}
 							checked={isMixed}
 							onChange={(e) => setIsMixed(e.target.checked)}
+							disabled={!isStoreOpen}
 						/>
 						<MixLabel htmlFor={`mix-${product.id}`}>
 							Misturar com Toscana
