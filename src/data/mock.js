@@ -34,7 +34,7 @@ export const mockData = {
 			category: "Porções",
 			name: "Porção Mista com Guaravita",
 			description: "Frango Empanado, Mandioca e linguiça.",
-			price: 10,
+			price: 15,
 			image: mistaImg,
 		},
 		{
