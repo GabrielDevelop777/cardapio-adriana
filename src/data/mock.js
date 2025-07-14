@@ -11,6 +11,7 @@ import {
 	kfcImg,
 	linguicaAcebolada,
 	milanesaImg,
+	mistaImg,
 	moelaImg,
 	omeleteImg,
 	panquecaImg,
@@ -28,6 +29,14 @@ export const mockData = {
 	},
 	products: [
 		// --- PORÇÕES ---
+		{
+			id: 17,
+			category: "Porções",
+			name: "Porção Mista com Guaravita",
+			description: "Frango Empanado, Mandioca e linguiça.",
+			price: 10,
+			image: mistaImg,
+		},
 		{
 			id: 1,
 			category: "Porções",

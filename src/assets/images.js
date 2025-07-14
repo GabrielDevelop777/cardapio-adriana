@@ -11,6 +11,7 @@ import kfcImg from "./kfc.png";
 import kuatImg from "./kuat.png";
 import linguicaAcebolada from "./ling acebolada.jpg";
 import milanesaImg from "./milanesa.jpg";
+import mistaImg from "./mista.png";
 import moelaImg from "./moela.png";
 import omeleteImg from "./omelete.png";
 import panquecaImg from "./panqueca.jpeg";
@@ -24,6 +25,7 @@ import toscanaImg from "./toscana.jpg";
 export {
 	batataP,
 	moelaImg,
+	mistaImg,
 	kfcImg,
 	picadinhoImg,
 	guaravitaImg,

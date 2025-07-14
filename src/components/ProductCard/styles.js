@@ -56,7 +56,7 @@ export const CardFooter = styled.div`
 export const Price = styled.p`
   font-size: 1.3rem;
   font-weight: 700;
-  color: #2a9d8f;
+  color: #f39c12;
 `;
 
 export const AddButton = styled.button`

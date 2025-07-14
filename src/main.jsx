@@ -1,13 +1,13 @@
-import { Analytics } from "@vercel/analytics/react"; // 1. Importe o componente
+import { Analytics } from "@vercel/analytics/react";
 import React from "react";
 import ReactDOM from "react-dom/client";
-import App from "./App.jsx";
+import Home from "./containers/Home";
 import { GlobalStyle } from "./styles/GlobalStyle.js";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
 	<React.StrictMode>
 		<GlobalStyle />
-		<App />
+		<Home />
 		<Analytics />
 	</React.StrictMode>,
 );
