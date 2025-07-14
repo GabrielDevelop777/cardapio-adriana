@@ -55,7 +55,7 @@ export default function Home() {
 	useEffect(() => {
 		const handleLoad = () => {
 			setIsFadingOut(true);
-			setTimeout(() => setIsLoading(false), 500);
+			setTimeout(() => setIsLoading(false), 1000);
 		};
 		if (document.readyState === "complete") handleLoad();
 		else window.addEventListener("load", handleLoad);
