@@ -49,6 +49,8 @@ export const CardFooter = styled.div`
   justify-content: space-between;
   align-items: center;
   margin-top: auto;
+  flex-wrap: wrap;
+  gap: 0.5rem;
 `;
 
 export const Price = styled.p`
@@ -71,7 +73,7 @@ export const AddButton = styled.button`
   align-items: center;
   gap: 0.5rem;
   background-size: 200% 100%;
-  white-space: nowrap; // Impede que o texto quebre
+  white-space: nowrap;
 
   &:hover {
     transform: scale(1.05);
@@ -83,7 +85,45 @@ export const AddButton = styled.button`
     cursor: not-allowed;
     box-shadow: none;
     transform: none;
-    font-size: 0.8rem; // Ajusta o tamanho da fonte para o texto maior
-    padding: 0.6rem 0.8rem; // Ajusta o padding para o texto maior
+    font-size: 0.8rem;
+    padding: 0.6rem 0.8rem;
   }
+`;
+
+export const AddonButton = styled(AddButton)`
+  background: #2ecc71;
+  width: 100%;
+  margin-top: 0.5rem;
+  justify-content: center;
+
+  &:hover {
+    background: #27ae60;
+    box-shadow: 0 4px 15px rgba(46, 204, 113, 0.4);
+  }
+`;
+
+// Estilos para a opção de mistura
+export const MixOptionContainer = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 0.75rem;
+  width: 100%;
+  padding: 0.5rem;
+  background-color: #f8f9fa;
+  border-radius: 6px;
+`;
+
+export const MixCheckbox = styled.input`
+  width: 18px;
+  height: 18px;
+  cursor: pointer;
+  accent-color: #e67e22;
+`;
+
+export const MixLabel = styled.label`
+  font-size: 0.9rem;
+  color: #333;
+  cursor: pointer;
+  flex-grow: 1;
 `;

@@ -75,6 +75,7 @@ export const Form = styled.form`
   display: flex;
   flex-direction: column;
   gap: 1.2rem;
+  margin-top: -100px;
 `;
 
 export const FormGroup = styled.div`

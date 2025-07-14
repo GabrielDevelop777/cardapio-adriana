@@ -7,8 +7,8 @@ import {
 	Truck,
 	X,
 } from "lucide-react";
-import React, { useState, useMemo } from "react";
-import PixIcon from "../PixIcon"; // Importando o novo ícone
+import { useMemo, useState } from "react";
+import PixIcon from "../PixIcon";
 import {
 	CartList,
 	CloseButton,
@@ -73,12 +73,8 @@ const CheckoutDrawer = ({
 
 	const finalTotal = useMemo(() => {
 		let total = cartTotal;
-		if (deliveryType === "delivery") {
-			total += DELIVERY_FEE;
-		}
-		if (paymentMethod === "credito") {
-			total += CARD_FEE;
-		}
+		if (deliveryType === "delivery") total += DELIVERY_FEE;
+		if (paymentMethod === "credito") total += CARD_FEE;
 		return total;
 	}, [cartTotal, deliveryType, paymentMethod]);
 
@@ -109,7 +105,6 @@ const CheckoutDrawer = ({
 			showToast("Por favor, preencha os campos em vermelho.", 3000, "error");
 			return;
 		}
-
 		setErrors({});
 
 		if (paymentMethod === "pix") {
@@ -118,11 +113,11 @@ const CheckoutDrawer = ({
 			const getPaymentMethodText = () => {
 				switch (paymentMethod) {
 					case "dinheiro":
-						return "Dinheiro";
+						return "*Dinheiro*";
 					case "credito":
-						return "Cartão de Crédito";
+						return "*Cartão de Crédito*";
 					case "debito":
-						return "Cartão de Débito";
+						return "*Cartão de Débito*";
 					default:
 						return "";
 				}
@@ -133,29 +128,26 @@ const CheckoutDrawer = ({
 				paymentMethod === "credito"
 					? `%0A*Taxa do Cartão:* R$ ${CARD_FEE.toFixed(2).replace(".", ",")}`
 					: "";
-
 			const orderSummary = cartItems
-				.map((item) => `${item.quantity}x ${item.name}`)
+				.map((item) => `• ${item.quantity}x ${item.name}`)
 				.join("%0A");
 			const deliveryInfo =
 				deliveryType === "delivery"
 					? `*Telefone:* ${formData.phone}%0A*Endereço:* ${formData.address}%0A*Taxa de Entrega:* R$ ${DELIVERY_FEE.toFixed(2).replace(".", ",")}`
-					: // biome-ignore lint/style/noUnusedTemplateLiteral: <explanation>
-						`*Modalidade:* Retirar na Loja`;
-
+					: "*Modalidade:* Retirar na Loja";
 			const observationInfo = formData.observation
-				? `%0A*Observação:* ${formData.observation}`
+				? `%0A%0A*Observações:*%0A${formData.observation}`
 				: "";
 
 			const message = `
-        *Novo Pedido - Delicias da Dri* 🚀%0A
-        %0A*Cliente:* ${formData.name}%0A
-        ${deliveryInfo}
-        ${observationInfo}
-        ${cardFeeText}%0A
-        %0A*Itens:*%0A${orderSummary}%0A
-        %0A*Total:* R$ ${finalTotal.toFixed(2).replace(".", ",")}%0A
-        *Pagamento:* ${paymentMethodText}
+        *---------- NOVO PEDIDO ----------*%0A
+        %0A*CLIENTE:*%0A*Nome:* ${formData.name}%0A
+		%0A*ITENS DO PEDIDO:*%0A${orderSummary}%0A
+        %0A*ENTREGA:*%0A${deliveryInfo}${observationInfo}%0A
+        %0A*------------------------------------*%0A
+        ${cardFeeText}
+        *TOTAL:* *R$ ${finalTotal.toFixed(2).replace(".", ",")}*%0A
+        *PAGAMENTO:* ${paymentMethodText}
       `
 				.trim()
 				.replace(/\s+/g, "%20");
@@ -177,7 +169,6 @@ const CheckoutDrawer = ({
 						<X size={24} />
 					</CloseButton>
 				</Header>
-
 				<Content>
 					<SectionTitle>Seu Pedido</SectionTitle>
 					<CartList>
@@ -206,7 +197,6 @@ const CheckoutDrawer = ({
 							</Item>
 						))}
 					</CartList>
-
 					<SectionTitle>Opção de Entrega</SectionTitle>
 					<OptionsGroup>
 						<OptionButton
@@ -222,7 +212,6 @@ const CheckoutDrawer = ({
 							<Truck size={20} /> Entrega
 						</OptionButton>
 					</OptionsGroup>
-
 					<SectionTitle>Seus Dados</SectionTitle>
 					<Form>
 						<FormGroup>
@@ -238,7 +227,6 @@ const CheckoutDrawer = ({
 								required
 							/>
 						</FormGroup>
-
 						{deliveryType === "delivery" ? (
 							<>
 								<FormGroup>
@@ -283,7 +271,6 @@ const CheckoutDrawer = ({
 							/>
 						)}
 					</Form>
-
 					<SectionTitle>Forma de Pagamento</SectionTitle>
 					<OptionsGroup>
 						<OptionButton
@@ -318,7 +305,6 @@ const CheckoutDrawer = ({
 						</FeeMessage>
 					)}
 				</Content>
-
 				<Footer>
 					<Total>
 						<span>Total:</span>

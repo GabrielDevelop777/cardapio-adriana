@@ -55,6 +55,7 @@ export const Footer = styled.div`
     flex-direction: column;
     align-items: flex-start;
     gap: 1rem;
+    margin-top: 10px;
   }
 `;
 

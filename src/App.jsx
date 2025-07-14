@@ -1,4 +1,4 @@
-import React, { useState, useMemo, useEffect, useCallback } from "react";
+import { useCallback, useEffect, useMemo, useState } from "react";
 import styled from "styled-components";
 
 import CheckoutDrawer from "./components/CheckoutDrawer";
@@ -6,15 +6,13 @@ import DishOfTheDayCard from "./components/DishOfTheDayCard";
 import FloatingCartButton from "./components/FloatingCartButton";
 import Footer from "./components/Footer";
 import PixModal from "./components/PixModal";
-// Importando componentes e dados
 import ProductCard from "./components/ProductCard";
+import QuantityModal from "./components/QuantityModal";
 import Toast from "./components/Toast";
 import { mockData } from "./data/mock";
 import useCountdown from "./hooks/useCountdown";
 
-// --- Estilos do Layout Principal ---
 const AppContainer = styled.div``;
-
 const Header = styled.header`
   background: linear-gradient(90deg, #e67e22, #f39c12);
   padding: 2rem 0;
@@ -26,7 +24,6 @@ const Header = styled.header`
   justify-content: center;
   align-items: center;
 `;
-
 const HeaderTitle = styled.h1`
   font-family: 'Great Vibes', cursive;
   font-size: 4.5rem;
@@ -34,7 +31,6 @@ const HeaderTitle = styled.h1`
   text-shadow: 1px 1px 4px rgba(0,0,0,0.25);
   margin: 0;
 `;
-
 const HeaderSlogan = styled.p`
   font-family: 'Montserrat', sans-serif;
   font-size: 1.1rem;
@@ -42,7 +38,6 @@ const HeaderSlogan = styled.p`
   letter-spacing: 1px;
   opacity: 0.9;
 `;
-
 const StatusBadge = styled.div`
   display: inline-block;
   padding: 0.4rem 1rem;
@@ -56,17 +51,14 @@ const StatusBadge = styled.div`
   transition: background-color 0.3s;
   box-shadow: 0 2px 5px rgba(0,0,0,0.15);
 `;
-
 const MainContent = styled.main`
   padding: 2.5rem;
   max-width: 1200px;
   margin: 0 auto;
 `;
-
 const MenuSection = styled.section`
   margin-bottom: 3.5rem;
 `;
-
 const SectionTitle = styled.h2`
   font-size: 2rem;
   font-weight: 700;
@@ -75,7 +67,6 @@ const SectionTitle = styled.h2`
   padding-bottom: 0.5rem;
   border-bottom: 2px solid #e67e22;
 `;
-
 const DishOfTheDayTitle = styled(SectionTitle)`
   text-align: center;
   border-bottom: none;
@@ -94,7 +85,6 @@ const DishOfTheDayTitle = styled(SectionTitle)`
     border-radius: 2px;
   }
 `;
-
 const ProductList = styled.div`
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
@@ -119,34 +109,34 @@ export default function App() {
 	});
 	const [deliveryType, setDeliveryType] = useState("pickup");
 	const [isStoreOpen, setIsStoreOpen] = useState(false);
+	const [isQuantityModalOpen, setIsQuantityModalOpen] = useState(false);
+	const [selectedProductForQuantity, setSelectedProductForQuantity] =
+		useState(null);
 	const countdown = useCountdown(11);
 
 	useEffect(() => {
 		const checkStoreStatus = () => {
 			const now = new Date();
 			const currentHour = now.getHours();
-			const isOpen = currentHour >= 11 && currentHour < 20;
+			const isOpen = currentHour >= 11 && currentHour < 23;
 			setIsStoreOpen(isOpen);
 		};
-
 		checkStoreStatus();
 		const interval = setInterval(checkStoreStatus, 60000);
-
 		return () => clearInterval(interval);
 	}, []);
 
 	useEffect(() => {
 		const body = document.body;
-		if (isDrawerOpen || isPixModalOpen) {
+		if (isDrawerOpen || isPixModalOpen || isQuantityModalOpen) {
 			body.style.overflow = "hidden";
 		} else {
 			body.style.overflow = "auto";
 		}
-
 		return () => {
 			body.style.overflow = "auto";
 		};
-	}, [isDrawerOpen, isPixModalOpen]);
+	}, [isDrawerOpen, isPixModalOpen, isQuantityModalOpen]);
 
 	const showToast = (message, duration = 2000, type = "info") => {
 		setToast({ show: true, message, duration, type });
@@ -168,7 +158,7 @@ export default function App() {
 		}
 	};
 
-	const handleAddToCart = (productToAdd) => {
+	const handleAddToCart = (productToAdd, quantity = 1) => {
 		if (!isStoreOpen) {
 			showToast("Desculpe, estamos fechados no momento.", 3000, "error");
 			return;
@@ -178,13 +168,36 @@ export default function App() {
 			if (existing) {
 				return prev.map((item) =>
 					item.id === productToAdd.id
-						? { ...item, quantity: item.quantity + 1 }
+						? { ...item, quantity: item.quantity + quantity }
 						: item,
 				);
 			}
-			return [...prev, { ...productToAdd, quantity: 1 }];
+			return [...prev, { ...productToAdd, quantity }];
 		});
 		showToast(`${productToAdd.name} adicionado!`, 2000, "success");
+	};
+
+	const handleAddAddon = (product) => {
+		if (!isStoreOpen) {
+			showToast("Desculpe, estamos fechados no momento.", 3000, "error");
+			return;
+		}
+		const comboProduct = {
+			...product,
+			id: `${product.id}-addon`,
+			name: `${product.name} com ${product.addon.name}`,
+			price: product.price + product.addon.price,
+		};
+		handleAddToCart(comboProduct);
+	};
+
+	const handleOpenQuantityModal = (product) => {
+		if (!isStoreOpen) {
+			showToast("Desculpe, estamos fechados no momento.", 3000, "error");
+			return;
+		}
+		setSelectedProductForQuantity(product);
+		setIsQuantityModalOpen(true);
 	};
 
 	const cartTotal = useMemo(
@@ -270,6 +283,8 @@ export default function App() {
 									key={product.id}
 									product={product}
 									onAddToCart={handleAddToCart}
+									onAddAddon={handleAddAddon}
+									onOpenQuantityModal={handleOpenQuantityModal}
 									isStoreOpen={isStoreOpen}
 									countdown={countdown}
 								/>
@@ -282,6 +297,13 @@ export default function App() {
 			<FloatingCartButton
 				itemCount={cartItemCount}
 				onClick={handleFloatingCartClick}
+			/>
+
+			<QuantityModal
+				isOpen={isQuantityModalOpen}
+				onClose={() => setIsQuantityModalOpen(false)}
+				product={selectedProductForQuantity}
+				onConfirm={handleAddToCart}
 			/>
 
 			<CheckoutDrawer

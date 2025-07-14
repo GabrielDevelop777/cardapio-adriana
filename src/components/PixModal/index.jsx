@@ -22,7 +22,7 @@ const PixModal = ({ total, onClose, formData, cartItems, deliveryType }) => {
 	const [paymentStep, setPaymentStep] = useState("awaiting");
 
 	const pixKey = "+5521980681134";
-	const merchantName = "Adriana Silva";
+	const merchantName = "Adriana da Silva Azevedo";
 	const merchantCity = "DUQUE DE CAXIAS";
 
 	// biome-ignore lint/correctness/useExhaustiveDependencies: <explanation>
@@ -38,30 +38,29 @@ const PixModal = ({ total, onClose, formData, cartItems, deliveryType }) => {
 	};
 
 	const handleSendReceipt = () => {
-		const whatsappNumber = "5521965150526"; // SUBSTITUA PELO SEU NÚMERO
+		const whatsappNumber = "5521965150526";
 
 		const orderSummary = cartItems
-			.map((item) => `${item.quantity}x ${item.name}`)
+			.map((item) => `• ${item.quantity}x ${item.name}`)
 			.join("%0A");
 		const deliveryInfo =
 			deliveryType === "delivery"
 				? `*Telefone:* ${formData.phone}%0A*Endereço:* ${formData.address}%0A*Taxa de Entrega:* R$ ${DELIVERY_FEE.toFixed(2).replace(".", ",")}`
-				: // biome-ignore lint/style/noUnusedTemplateLiteral: <explanation>
-					`*Modalidade:* Retirar na Loja`;
+				: "*Modalidade:* Retirar na Loja";
 
 		const observationInfo = formData.observation
-			? `%0A*Observação:* ${formData.observation}`
+			? `%0A%0A*Observações:*%0A${formData.observation}`
 			: "";
 
 		const message = `
-      *🛍️ Resumo do Pedido - Delicias da Dri* ✅%0A
-      %0AOlá! Segue meu pedido.%0A
-      %0A*Cliente:* ${formData.name}%0A
-      ${deliveryInfo}
-      ${observationInfo}%0A
-      %0A*Itens:*%0A${orderSummary}%0A
-      %0A*Total Pago:* R$ ${total.toFixed(2).replace(".", ",")}%0A
-      *Pagamento:* PIX
+      *---------- NOVO PEDIDO ----------*%0A
+      %0AOlá! Segue o comprovante do meu pedido.%0A
+      %0A*CLIENTE:*%0A*Nome:* ${formData.name}%0A
+	  %0A*ITENS DO PEDIDO:*%0A${orderSummary}%0A
+      %0A%0A${deliveryInfo}${observationInfo}%0A
+      %0A*------------------------------------*%0A
+      *TOTAL PAGO:* *R$ ${total.toFixed(2).replace(".", ",")}*%0A
+      *PAGAMENTO:* *PIX*
     `
 			.trim()
 			.replace(/\s+/g, "%20");
