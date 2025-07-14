@@ -23,7 +23,7 @@ export const mockData = {
 		id: 101, // ID do prato do dia pode ser mantido separado
 		name: "Angu com Moela",
 		// description: "Acompanha Arroz, Feijão, Macarrão, Farofa e Salada.",
-		price: 23,
+		price: 15,
 		image: moelaImg,
 	},
 	products: [
