@@ -33,7 +33,7 @@ export const mockData = {
 			category: "Porções",
 			name: "Frango Empanado",
 			description: "Porção de frango empanado.",
-			price: 3.5,
+			price: 10,
 			image: kfcImg,
 			mixOption: true, // Flag para a opção de mistura
 		},
