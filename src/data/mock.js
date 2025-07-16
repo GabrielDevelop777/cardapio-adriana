@@ -8,6 +8,7 @@ import {
 	frangoGrelhado,
 	guaranaImg,
 	guaravitaImg,
+	iscaImg,
 	kfcImg,
 	linguicaAcebolada,
 	milanesaImg,
@@ -23,18 +24,11 @@ import {
 export const mockData = {
 	dishOfTheDay: {
 		id: 101,
-		name: "Panqueca Sabores",
+		name: "Isca de Figado com Purê de Batata",
 		description: "Acompanha Arroz, Feijão, Macarrão, Farofa e Salada.",
 		price: 16,
-		image: pankecaImg,
-		requiresAddonModal: true,
-		addon: {
-			question: "Deseja adicionar Porção de Batata por mais R$ 5,00?",
-			name: "com Porção de Batata",
-			price: 5.0,
-			confirmText: "Sim, adicionar",
-			denyText: "Não, obrigado",
-		},
+		image: iscaImg,
+		// As propriedades de modal foram removidas para simplificar a ação
 	},
 	products: [
 		// --- PORÇÕES ---
@@ -59,13 +53,13 @@ export const mockData = {
 			category: "Porções",
 			name: "Frango Empanado",
 			description: "Porção de frango empanado.",
-			price: 15,
+			price: 10,
 			image: kfcImg,
 			requiresAddonModal: true,
 			addon: {
 				question: "Deseja que seja misto com linguiça?",
 				name: "(Misto com Toscana)",
-				price: 0, // Sem custo adicional para misturar
+				price: 0,
 				confirmText: "Sim, misto",
 				denyText: "Apenas Frango",
 			},

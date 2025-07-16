@@ -66,7 +66,7 @@ export default function Home() {
 		const checkStoreStatus = () => {
 			const now = new Date();
 			const currentHour = now.getHours();
-			const isOpen = currentHour >= 11 && currentHour < 17;
+			const isOpen = currentHour >= 11 && currentHour < 16;
 			setIsStoreOpen(isOpen);
 		};
 		checkStoreStatus();
@@ -252,8 +252,8 @@ export default function Home() {
 			</ToastManager>
 
 			<Header>
-				<HeaderTitle>Delicias da Dri</HeaderTitle>
-				<HeaderSlogan>Aqui, cada sabor no seu lugar!</HeaderSlogan>
+				<HeaderTitle>Delícias da Dri</HeaderTitle>
+				<HeaderSlogan>"Aqui, é cada sabor no seu lugar!"</HeaderSlogan>
 				<StatusBadge $isOpen={isStoreOpen}>
 					{isStoreOpen ? "Aberto" : "Fechado"}
 				</StatusBadge>

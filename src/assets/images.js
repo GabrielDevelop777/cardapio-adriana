@@ -7,6 +7,7 @@ import fileParmegiana from "./file-parmegiana.jpeg";
 import frangoGrelhado from "./fng-grlhado.png";
 import guaranaImg from "./guarana.png";
 import guaravitaImg from "./guaravita.png";
+import iscaImg from "./isca.jpg";
 import kfcImg from "./kfc.png";
 import kuatImg from "./kuat.png";
 import linguicaAcebolada from "./ling acebolada.jpg";
@@ -25,6 +26,7 @@ import toscanaImg from "./toscana.jpg";
 // Exporte-as como variáveis
 export {
 	batataP,
+	iscaImg,
 	moelaImg,
 	mistaImg,
 	pankecaImg,
