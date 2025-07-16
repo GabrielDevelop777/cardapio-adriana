@@ -29,7 +29,6 @@ import {
 
 export default function Home() {
 	const [isLoading, setIsLoading] = useState(true);
-	const [isFadingOut, setIsFadingOut] = useState(false);
 	const [cart, setCart] = useState([]);
 	const [isPixModalOpen, setPixModalOpen] = useState(false);
 	const [pixTotal, setPixTotal] = useState(0);
@@ -52,21 +51,15 @@ export default function Home() {
 	const [productWithAddon, setProductWithAddon] = useState(null);
 	const countdown = useCountdown(11);
 
-	useEffect(() => {
-		const handleLoad = () => {
-			setIsFadingOut(true);
-			setTimeout(() => setIsLoading(false), 1000);
-		};
-		if (document.readyState === "complete") handleLoad();
-		else window.addEventListener("load", handleLoad);
-		return () => window.removeEventListener("load", handleLoad);
+	const handleLoadingComplete = useCallback(() => {
+		setIsLoading(false);
 	}, []);
 
 	useEffect(() => {
 		const checkStoreStatus = () => {
 			const now = new Date();
 			const currentHour = now.getHours();
-			const isOpen = currentHour >= 11 && currentHour < 16;
+			const isOpen = currentHour >= 11 && currentHour < 15;
 			setIsStoreOpen(isOpen);
 		};
 		checkStoreStatus();
@@ -141,21 +134,11 @@ export default function Home() {
 		showToast(`${finalProduct.name} adicionado!`, 2000, "success");
 	};
 
-	const handleOpenQuantityModal = (product) => {
-		if (!isStoreOpen) {
-			showToast("Desculpe, estamos fechados no momento.", 3000, "error");
-			return;
-		}
-		setSelectedProductForQuantity(product);
-		setIsQuantityModalOpen(true);
-	};
-
 	const handleOpenAddonModal = (product) => {
 		if (!isStoreOpen) {
 			showToast("Desculpe, estamos fechados no momento.", 3000, "error");
 			return;
 		}
-		// Se o produto não tem um addon definido, adiciona direto
 		if (!product.addon) {
 			handleAddToCart(product);
 			return;
@@ -178,6 +161,15 @@ export default function Home() {
 		} else {
 			handleAddToCart(productToProcess);
 		}
+	};
+
+	const handleOpenQuantityModal = (product) => {
+		if (!isStoreOpen) {
+			showToast("Desculpe, estamos fechados no momento.", 3000, "error");
+			return;
+		}
+		setSelectedProductForQuantity(product);
+		setIsQuantityModalOpen(true);
 	};
 
 	const handleConfirmFlavor = (flavor) => {
@@ -233,7 +225,7 @@ export default function Home() {
 	}, []);
 
 	if (isLoading) {
-		return <Loader isFadingOut={isFadingOut} />;
+		return <Loader onLoaded={handleLoadingComplete} />;
 	}
 
 	return (
@@ -252,7 +244,7 @@ export default function Home() {
 			</ToastManager>
 
 			<Header>
-				<HeaderTitle>Delícias da Dri</HeaderTitle>
+				<HeaderTitle>Delicias da Dri</HeaderTitle>
 				<HeaderSlogan>"Aqui, é cada sabor no seu lugar!"</HeaderSlogan>
 				<StatusBadge $isOpen={isStoreOpen}>
 					{isStoreOpen ? "Aberto" : "Fechado"}
@@ -264,6 +256,7 @@ export default function Home() {
 					<DishOfTheDayTitle>Prato do Dia</DishOfTheDayTitle>
 					<DishOfTheDayCard
 						product={mockData.dishOfTheDay}
+						onAddToCart={handleAddToCart}
 						onOpenAddonModal={handleOpenAddonModal}
 						isStoreOpen={isStoreOpen}
 						countdown={countdown}
