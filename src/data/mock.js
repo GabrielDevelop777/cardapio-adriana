@@ -1,4 +1,5 @@
 import {
+	assadoImg,
 	batataMaluca,
 	batataP,
 	bifeAcebolado,
@@ -24,10 +25,10 @@ import {
 export const mockData = {
 	dishOfTheDay: {
 		id: 101,
-		name: "Isca de Figado com Purê de Batata",
+		name: "Frango Assado com Maionese",
 		description: "Acompanha Arroz, Feijão, Macarrão, Farofa e Salada.",
-		price: 16,
-		image: iscaImg,
+		price: 18,
+		image: assadoImg,
 		// As propriedades de modal foram removidas para simplificar a ação
 	},
 	products: [

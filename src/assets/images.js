@@ -1,3 +1,4 @@
+import assadoImg from "./assado.png";
 import batataMaluca from "./batata-maluca.jpg";
 import batataP from "./batata p.jpg";
 import bifeAcebolado from "./bife-acebolado.jpg";
@@ -27,6 +28,7 @@ import toscanaImg from "./toscana.jpg";
 export {
 	batataP,
 	iscaImg,
+	assadoImg,
 	moelaImg,
 	mistaImg,
 	pankecaImg,
