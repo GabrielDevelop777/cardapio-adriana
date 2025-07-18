@@ -5,6 +5,7 @@ import {
 	bifeAcebolado,
 	carreImg,
 	cocaImg,
+	costelaImg,
 	fileParmegiana,
 	frangoGrelhado,
 	guaranaImg,
@@ -25,11 +26,10 @@ import {
 export const mockData = {
 	dishOfTheDay: {
 		id: 101,
-		name: "Frango Assado com Maionese",
+		name: "Costela com Batata e Agrão",
 		description: "Acompanha Arroz, Feijão, Macarrão, Farofa e Salada.",
-		price: 18,
-		image: assadoImg,
-		// As propriedades de modal foram removidas para simplificar a ação
+		price: 23,
+		image: costelaImg,
 	},
 	products: [
 		// --- PORÇÕES ---

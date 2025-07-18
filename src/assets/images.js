@@ -4,6 +4,7 @@ import batataP from "./batata p.jpg";
 import bifeAcebolado from "./bife-acebolado.jpg";
 import carreImg from "./carre.jpeg";
 import cocaImg from "./coca.png";
+import costelaImg from "./costela.png";
 import fileParmegiana from "./file-parmegiana.jpeg";
 import frangoGrelhado from "./fng-grlhado.png";
 import guaranaImg from "./guarana.png";
@@ -27,6 +28,7 @@ import toscanaImg from "./toscana.jpg";
 // Exporte-as como variáveis
 export {
 	batataP,
+	costelaImg,
 	iscaImg,
 	assadoImg,
 	moelaImg,
