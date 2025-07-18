@@ -9,8 +9,8 @@ import {
 const AddonModal = ({ isOpen, onClose, product, onConfirm }) => {
 	if (!isOpen || !product || !product.addon) return null;
 
-	const handleConfirm = (withAddon) => {
-		onConfirm(product, withAddon);
+	const handleConfirm = (response) => {
+		onConfirm(product, response);
 		onClose();
 	};
 

@@ -1,7 +1,9 @@
 import React, { useState, useMemo, useEffect, useCallback } from "react";
+import styled from "styled-components";
 
 import AddonModal from "../../components/AddonModal";
 import CheckoutDrawer from "../../components/CheckoutDrawer";
+import ClosedStoreModal from "../../components/ClosedStoreModal";
 import DishOfTheDayCard from "../../components/DishOfTheDayCard";
 import FlavorModal from "../../components/FlavorModal";
 import FloatingCartButton from "../../components/FloatingCartButton";
@@ -163,6 +165,7 @@ export default function Home() {
 		}
 	};
 
+	// CORREÇÃO: Função restaurada
 	const handleOpenQuantityModal = (product) => {
 		if (!isStoreOpen) {
 			showToast("Desculpe, estamos fechados no momento.", 3000, "error");
@@ -333,6 +336,8 @@ export default function Home() {
 			)}
 
 			<Footer />
+
+			{!isLoading && !isStoreOpen && <ClosedStoreModal />}
 		</AppContainer>
 	);
 }
