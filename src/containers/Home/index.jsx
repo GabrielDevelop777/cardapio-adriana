@@ -59,7 +59,7 @@ export default function Home() {
 		const checkStoreStatus = () => {
 			const now = new Date();
 			const currentHour = now.getHours();
-			const isOpen = currentHour >= 11 && currentHour < 16;
+			const isOpen = currentHour >= 10 && currentHour < 16;
 			setIsStoreOpen(isOpen);
 		};
 		checkStoreStatus();
