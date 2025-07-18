@@ -26,7 +26,7 @@ import {
 export const mockData = {
 	dishOfTheDay: {
 		id: 101,
-		name: "Costela com Batata e Agrão",
+		name: "Costela com Batata ",
 		description: "Acompanha Arroz, Feijão, Macarrão, Farofa e Salada.",
 		price: 23,
 		image: costelaImg,
