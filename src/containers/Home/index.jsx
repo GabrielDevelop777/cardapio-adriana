@@ -1,5 +1,4 @@
-import React, { useState, useMemo, useEffect, useCallback } from "react";
-import styled from "styled-components";
+import { useCallback, useEffect, useMemo, useState } from "react";
 
 import AddonModal from "../../components/AddonModal";
 import CheckoutDrawer from "../../components/CheckoutDrawer";
@@ -61,7 +60,7 @@ export default function Home() {
 		const checkStoreStatus = () => {
 			const now = new Date();
 			const currentHour = now.getHours();
-			const isOpen = currentHour >= 20 && currentHour < 21;
+			const isOpen = currentHour >= 10 && currentHour < 16;
 			setIsStoreOpen(isOpen);
 		};
 		checkStoreStatus();
@@ -165,7 +164,6 @@ export default function Home() {
 		}
 	};
 
-	// CORREÇÃO: Função restaurada
 	const handleOpenQuantityModal = (product) => {
 		if (!isStoreOpen) {
 			showToast("Desculpe, estamos fechados no momento.", 3000, "error");
@@ -247,7 +245,7 @@ export default function Home() {
 			</ToastManager>
 
 			<Header>
-				<HeaderTitle>Delicias da Dri</HeaderTitle>
+				<HeaderTitle>Delícias da Dri</HeaderTitle>
 				<HeaderSlogan>"Aqui, é cada sabor no seu lugar!"</HeaderSlogan>
 				<StatusBadge $isOpen={isStoreOpen}>
 					{isStoreOpen ? "Aberto" : "Fechado"}
@@ -337,7 +335,7 @@ export default function Home() {
 
 			<Footer />
 
-			{!isLoading && !isStoreOpen && <ClosedStoreModal />}
+			{/* {!isLoading && !isStoreOpen && <ClosedStoreModal />} */}
 		</AppContainer>
 	);
 }
