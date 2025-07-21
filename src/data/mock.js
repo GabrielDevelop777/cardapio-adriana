@@ -26,7 +26,7 @@ import {
 export const mockData = {
 	dishOfTheDay: {
 		id: 101,
-		name: "Bife Acebolado com Batata Fritas",
+		name: "Bife Acebolado com Fritas",
 		description: "Acompanha Arroz, Feijão, Macarrão, Farofa e Salada.",
 		price: 23,
 		image: bifeAcebolado,
