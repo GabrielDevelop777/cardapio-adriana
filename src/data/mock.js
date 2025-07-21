@@ -1,4 +1,5 @@
 import {
+	BifeFritasImg,
 	assadoImg,
 	batataMaluca,
 	batataP,
@@ -26,10 +27,10 @@ import {
 export const mockData = {
 	dishOfTheDay: {
 		id: 101,
-		name: "Costela com Batata ",
+		name: "Bife com Batata Frita ",
 		description: "Acompanha Arroz, Feijão, Macarrão, Farofa e Salada.",
 		price: 23,
-		image: costelaImg,
+		image: BifeFritasImgs,
 	},
 	products: [
 		// --- PORÇÕES ---
