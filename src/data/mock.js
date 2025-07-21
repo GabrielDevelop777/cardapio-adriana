@@ -1,5 +1,4 @@
 import {
-	BifeFritasImg,
 	assadoImg,
 	batataMaluca,
 	batataP,
