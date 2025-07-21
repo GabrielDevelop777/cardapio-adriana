@@ -1,4 +1,4 @@
-import BifeFritasImg from "./BifeFritasImg.png"
+import BifeFritasImg from "./BifeFritasImg.png";
 import assadoImg from "./assado.png";
 import batataMaluca from "./batata-maluca.jpg";
 import batataP from "./batata p.jpg";
@@ -29,7 +29,7 @@ import toscanaImg from "./toscana.jpg";
 // Exporte-as como variáveis
 export {
 	batataP,
-	BifeFritasImg
+	BifeFritasImg,
 	costelaImg,
 	iscaImg,
 	assadoImg,
