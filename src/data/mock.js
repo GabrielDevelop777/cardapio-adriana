@@ -30,7 +30,7 @@ export const mockData = {
 		name: "Bife com Batata Frita ",
 		description: "Acompanha Arroz, Feijão, Macarrão, Farofa e Salada.",
 		price: 23,
-		image: BifeFritasImgs,
+		image: bifeAcebolados,
 	},
 	products: [
 		// --- PORÇÕES ---
