@@ -26,10 +26,10 @@ import {
 export const mockData = {
 	dishOfTheDay: {
 		id: 101,
-		name: "Bife Acebolado com Fritas",
+		name: "ìsca de figado com Purê",
 		description: "Acompanha Arroz, Feijão, Macarrão, Farofa e Salada.",
-		price: 23,
-		image: bifeAcebolado,
+		price: 16,
+		image: iscaImg,
 	},
 	products: [
 		// --- PORÇÕES ---
