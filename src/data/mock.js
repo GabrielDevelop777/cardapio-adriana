@@ -4,7 +4,6 @@ import {
 	batataP,
 	bifeAcebolado,
 	carneBatataImg,
-	carneassadaImgImg,
 	carreImg,
 	cocaImg,
 	costelaImg,
