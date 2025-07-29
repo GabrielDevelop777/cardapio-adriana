@@ -2,6 +2,7 @@ import assadoImg from "./assado.png";
 import batataMaluca from "./batata-maluca.jpg";
 import batataP from "./batata p.jpg";
 import bifeAcebolado from "./bife-acebolado.jpg";
+import carneBatataImg from "./carneBatataImg.png";
 import carneassadaImg from "./carneassadaImg";
 import carreImg from "./carre.jpeg";
 import cocaImg from "./coca.png";
@@ -25,7 +26,6 @@ import pratoPrincipal from "./prato-principal.jpg";
 import sukitaUva from "./sukita-uva.webp";
 import sukitaImg from "./sukita.jpg";
 import toscanaImg from "./toscana.jpg";
-
 // Exporte-as como variáveis
 export {
 	batataP,
@@ -55,4 +55,5 @@ export {
 	bifeAcebolado,
 	sukitaImg,
 	carneassadaImg,
+	carneBatataImg,
 };
