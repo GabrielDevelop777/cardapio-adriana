@@ -3,7 +3,7 @@ import {
 	batataMaluca,
 	batataP,
 	bifeAcebolado,
-	carneBatataImg,
+	carneBatata,
 	carreImg,
 	cocaImg,
 	costelaImg,
@@ -30,7 +30,7 @@ export const mockData = {
 		name: "Carne Assada Com Batata",
 		description: "Acompanha Arroz, Feijão, Macarrão, Farofa e Salada.",
 		price: 23,
-		image: carneBatataImg,
+		image: carneBatata,
 	},
 	products: [
 		// --- PORÇÕES ---
