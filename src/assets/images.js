@@ -3,7 +3,6 @@ import batataMaluca from "./batata-maluca.jpg";
 import batataP from "./batata p.jpg";
 import bifeAcebolado from "./bife-acebolado.jpg";
 import carneBatataImg from "./carneBatataImg.png";
-import carneassadaImg from "./carneassadaImg";
 import carreImg from "./carre.jpeg";
 import cocaImg from "./coca.png";
 import costelaImg from "./costela.png";
@@ -54,6 +53,5 @@ export {
 	kuatImg,
 	bifeAcebolado,
 	sukitaImg,
-	carneassadaImg,
 	carneBatataImg,
 };
