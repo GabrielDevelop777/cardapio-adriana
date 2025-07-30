@@ -27,10 +27,10 @@ import {
 export const mockData = {
 	dishOfTheDay: {
 		id: 101,
-		name: "Carne Assada Com Batata",
+		name: "Frango Assado com Maionese",
 		description: "Acompanha Arroz, Feijão, Macarrão, Farofa e Salada.",
-		price: 23,
-		image: carneBatataImg,
+		price: 18,
+		image: assadoImg,
 	},
 	products: [
 		// --- PORÇÕES ---
