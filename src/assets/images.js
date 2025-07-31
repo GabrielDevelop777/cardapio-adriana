@@ -1,6 +1,6 @@
 import assadoImg from "./assado.png";
-import batataMaluca from "./batata-maluca.jpg";
 import batataP from "./batata p.jpg";
+import batataMaluca from "./batata-maluca.jpg";
 import bifeAcebolado from "./bife-acebolado.jpg";
 import carneBatataImg from "./carne-batata.png";
 import carreImg from "./carre.jpeg";
@@ -22,8 +22,8 @@ import panquecaImg from "./panqueca.jpeg";
 import pankecaImg from "./panqueca.png";
 import picadinhoImg from "./picadinho.jpg";
 import pratoPrincipal from "./prato-principal.jpg";
-import sukitaUva from "./sukita-uva.webp";
 import sukitaImg from "./sukita.jpg";
+import sukitaUva from "./sukita-uva.webp";
 import toscanaImg from "./toscana.jpg";
 
 export {

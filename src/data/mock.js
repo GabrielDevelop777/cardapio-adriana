@@ -27,10 +27,10 @@ import {
 export const mockData = {
 	dishOfTheDay: {
 		id: 101,
-		name: "Frango Assado com Maionese",
+		name: "Costela com Batata",
 		description: "Acompanha Arroz, Feijão, Macarrão, Farofa e Salada.",
-		price: 18,
-		image: assadoImg,
+		price: 23,
+		image: costelaImg,
 	},
 	products: [
 		// --- PORÇÕES ---
@@ -135,7 +135,7 @@ export const mockData = {
 		{
 			id: 9,
 			category: "Marmitas",
-			name: "Linguiça Acebolada",
+			name: "Linguiça Calabresa Acebolada",
 			description: "Acompanha Arroz, Feijão, Macarrão, Farofa e Salada.",
 			price: 12,
 			image: linguicaAcebolada,
@@ -167,7 +167,7 @@ export const mockData = {
 		{
 			id: 12,
 			category: "Marmitas",
-			name: "Linguiça Toscana",
+			name: "Linguiça Toscana Acebolada",
 			description: "Acompanha Arroz, Feijão, Macarrão, Farofa e Salada.",
 			price: 12,
 			image: toscanaImg,
@@ -179,6 +179,14 @@ export const mockData = {
 				confirmText: "Sim, com Batata",
 				denyText: "Não, obrigado",
 			},
+		},
+		{
+			id: 17,
+			category: "Marmitas",
+			name: "Isca de Figado",
+			description: "Acompanha Arroz, Feijão, Macarrão, Farofa e Salada.",
+			price: 12,
+			image: iscaImg,
 		},
 		// --- BEBIDAS ---
 		{
