@@ -7,6 +7,7 @@ import {
 	carreImg,
 	cocaImg,
 	costelaImg,
+	costelaSuina,
 	fileParmegiana,
 	frangoGrelhado,
 	guaranaImg,
@@ -30,7 +31,7 @@ export const mockData = {
 		name: "Costela Suina Com Angu e Jiló",
 		description: "Acompanha Arroz, Feijão, Macarrão, Farofa e Salada.",
 		price: 23,
-		image: costelaImg,
+		image: costelaSuina,
 	},
 	products: [
 		// --- PORÇÕES ---

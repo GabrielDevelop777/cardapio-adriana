@@ -6,6 +6,7 @@ import carneBatataImg from "./carne-batata.png";
 import carreImg from "./carre.jpeg";
 import cocaImg from "./coca.png";
 import costelaImg from "./costela.png";
+import costelaSuina from "./costela-suina.png";
 import fileParmegiana from "./file-parmegiana.jpeg";
 import frangoGrelhado from "./fng-grlhado.png";
 import guaranaImg from "./guarana.png";
@@ -54,4 +55,5 @@ export {
 	bifeAcebolado,
 	sukitaImg,
 	carneBatataImg,
+	costelaSuina,
 };
