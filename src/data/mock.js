@@ -27,7 +27,7 @@ import {
 export const mockData = {
 	dishOfTheDay: {
 		id: 101,
-		name: "Costela com Batata",
+		name: "Costela Suina Com Angu e Jiló",
 		description: "Acompanha Arroz, Feijão, Macarrão, Farofa e Salada.",
 		price: 23,
 		image: costelaImg,
