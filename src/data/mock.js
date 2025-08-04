@@ -28,10 +28,10 @@ import {
 export const mockData = {
 	dishOfTheDay: {
 		id: 101,
-		name: "Costela Suina Com Polenta e Jiló",
+		name: "Isca de Figado",
 		description: "Acompanha Arroz, Feijão, Macarrão, Farofa e Salada.",
-		price: 23,
-		image: costelaSuina,
+		price: 12,
+		image: iscaImg,
 	},
 	products: [
 		// --- PORÇÕES ---
