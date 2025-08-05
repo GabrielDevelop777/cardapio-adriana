@@ -28,10 +28,10 @@ import {
 export const mockData = {
 	dishOfTheDay: {
 		id: 101,
-		name: "Isca de Figado",
+		name: "Carré",
 		description: "Acompanha Arroz, Feijão, Macarrão, Farofa e Salada.",
-		price: 12,
-		image: iscaImg,
+		price: 15,
+		image: carreImg,
 	},
 	products: [
 		// --- PORÇÕES ---
