@@ -45,7 +45,7 @@ const Footer = () => {
 
 			<InfoSection>
 				<p>Parque Paulista 📍</p>
-				<p>Aberto de segunda à sabado, 11:00 - 15:00</p>
+				<p>Aberto de Segunda à Sexta, 11:00 - 16:00</p>
 			</InfoSection>
 
 			<Copyright>

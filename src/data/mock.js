@@ -114,7 +114,7 @@ export const mockData = {
 			category: "Marmitas",
 			name: "Frango a Parmegiana",
 			description: "Acompanha Arroz, Feijão, Macarrão, Farofa e Salada.",
-			price: 16,
+			price: 18,
 			image: fileParmegiana,
 			requiresAddonModal: true,
 			addon: {
@@ -130,7 +130,7 @@ export const mockData = {
 			category: "Marmitas",
 			name: "Frango a Milanesa",
 			description: "Acompanha Arroz, Feijão, Macarrão, Farofa e Salada.",
-			price: 15,
+			price: 16,
 			image: milanesaImg,
 		},
 		{
@@ -154,7 +154,7 @@ export const mockData = {
 			category: "Marmitas",
 			name: "Omelete",
 			description: "Acompanha Arroz, Feijão, Macarrão, Farofa e Salada.",
-			price: 12,
+			price: 13,
 			image: omeleteImg,
 			requiresAddonModal: true,
 			addon: {
