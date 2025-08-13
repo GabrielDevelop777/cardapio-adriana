@@ -106,7 +106,7 @@ export const mockData = {
 			category: "Marmitas",
 			name: "Frango Grelhado",
 			description: "Acompanha Arroz, Feijão, Macarrão, Farofa e Salada.",
-			price: 12,
+			price: 13,
 			image: frangoGrelhado,
 		},
 		{
