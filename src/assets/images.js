@@ -23,6 +23,7 @@ import panquecaImg from "./panqueca.jpeg";
 import pankecaImg from "./panqueca.png";
 import picadinhoImg from "./picadinho.jpg";
 import pratoPrincipal from "./prato-principal.jpg";
+import roleImg from "./role.png";
 import sukitaImg from "./sukita.jpg";
 import sukitaUva from "./sukita-uva.webp";
 import toscanaImg from "./toscana.jpg";
@@ -56,4 +57,5 @@ export {
 	sukitaImg,
 	carneBatataImg,
 	costelaSuina,
+	roleImg,
 };

@@ -21,6 +21,7 @@ import {
 	omeleteImg,
 	pankecaImg,
 	panquecaImg,
+	roleImg,
 	sukitaImg,
 	toscanaImg,
 } from "../assets/images";
@@ -28,10 +29,10 @@ import {
 export const mockData = {
 	dishOfTheDay: {
 		id: 101,
-		name: "Carré",
+		name: "Bifé a Rolê",
 		description: "Acompanha Arroz, Feijão, Macarrão, Farofa e Salada.",
-		price: 15,
-		image: carreImg,
+		price: 23,
+		image: roleImg,
 	},
 	products: [
 		// --- PORÇÕES ---
