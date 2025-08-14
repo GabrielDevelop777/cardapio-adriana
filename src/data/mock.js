@@ -29,10 +29,10 @@ import {
 export const mockData = {
 	dishOfTheDay: {
 		id: 101,
-		name: "Bifé a Rolê",
+		name: "Carne Assada com Batata",
 		description: "Acompanha Arroz, Feijão, Macarrão, Farofa e Salada.",
 		price: 23,
-		image: roleImg,
+		image: carneBatataImg,
 	},
 	products: [
 		// --- PORÇÕES ---
