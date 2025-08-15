@@ -30,7 +30,7 @@ import {
 export const mockData = {
 	dishOfTheDay: {
 		id: 101,
-		name: "Costela com Canjiquinha",
+		name: "Canjiquinha com Costelinha",
 		description: "Acompanha Arroz, Feijão, Macarrão, Farofa e Salada.",
 		price: 23,
 		image: canjiquinhaImg,
