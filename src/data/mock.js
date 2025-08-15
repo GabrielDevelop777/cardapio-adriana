@@ -3,6 +3,7 @@ import {
 	batataMaluca,
 	batataP,
 	bifeAcebolado,
+	canjiquinhaImg,
 	carneBatataImg,
 	carreImg,
 	cocaImg,
@@ -29,10 +30,10 @@ import {
 export const mockData = {
 	dishOfTheDay: {
 		id: 101,
-		name: "Carne Assada com Batata",
+		name: "Costela com Canjiquinha",
 		description: "Acompanha Arroz, Feijão, Macarrão, Farofa e Salada.",
 		price: 23,
-		image: carneBatataImg,
+		image: canjiquinhaImg,
 	},
 	products: [
 		// --- PORÇÕES ---
