@@ -2,6 +2,7 @@ import assadoImg from "./assado.png";
 import batataP from "./batata p.jpg";
 import batataMaluca from "./batata-maluca.jpg";
 import bifeAcebolado from "./bife-acebolado.jpg";
+import canjiquinhaImg from "./canjiquinha.png";
 import carneBatataImg from "./carne-batata.png";
 import carreImg from "./carre.jpeg";
 import cocaImg from "./coca.png";
@@ -58,4 +59,5 @@ export {
 	carneBatataImg,
 	costelaSuina,
 	roleImg,
+	canjiquinhaImg,
 };
