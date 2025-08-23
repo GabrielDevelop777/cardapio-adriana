@@ -335,7 +335,7 @@ export default function Home() {
 
 			<Footer />
 
-			{/* {!isLoading && !isStoreOpen && <ClosedStoreModal />} */}
+			{!isLoading && !isStoreOpen && <ClosedStoreModal />}
 		</AppContainer>
 	);
 }

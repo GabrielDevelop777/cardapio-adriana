@@ -1,14 +1,34 @@
-import { XCircle } from "lucide-react";
-import { IconWrapper, ModalContainer, Overlay, Title } from "./styles";
+import { Clock } from "lucide-react";
+import {
+	CloseButton,
+	IconWrapper,
+	ModalContainer,
+	ModalHeader,
+	Overlay,
+	Subtitle,
+	Title,
+} from "./styles";
 
-const ClosedStoreModal = () => {
+const ClosedStoreModal = ({ onClose }) => {
 	return (
-		<Overlay>
-			<ModalContainer>
+		<Overlay onClick={onClose}>
+			{/* e.stopPropagation() impede que o clique no modal feche ele */}
+			<ModalContainer onClick={(e) => e.stopPropagation()}>
+				<ModalHeader>
+					<CloseButton onClick={onClose}></CloseButton>
+				</ModalHeader>
+
 				<IconWrapper>
-					<XCircle size={60} strokeWidth={1.5} />
+					{/* Ícone mais amigável e contextual */}
+					<Clock size={50} strokeWidth={1.5} />
 				</IconWrapper>
-				<Title>Desculpa, não funcionaremos hoje!</Title>
+
+				<Title>Estamos fechados no momento</Title>
+
+				<Subtitle>
+					Nosso horário de funcionamento é de Segunda a Sexta, das 10:00 às
+					16:00.
+				</Subtitle>
 			</ModalContainer>
 		</Overlay>
 	);
