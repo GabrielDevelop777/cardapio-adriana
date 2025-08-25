@@ -1,8 +1,6 @@
 import { useCallback, useEffect, useMemo, useState } from "react";
-
 import AddonModal from "../../components/AddonModal";
 import CheckoutDrawer from "../../components/CheckoutDrawer";
-import ClosedStoreModal from "../../components/ClosedStoreModal";
 import DishOfTheDayCard from "../../components/DishOfTheDayCard";
 import FlavorModal from "../../components/FlavorModal";
 import FloatingCartButton from "../../components/FloatingCartButton";
@@ -59,10 +57,19 @@ export default function Home() {
 	useEffect(() => {
 		const checkStoreStatus = () => {
 			const now = new Date();
+			const dayOfWeek = now.getDay();
 			const currentHour = now.getHours();
-			const isOpen = currentHour >= 10 && currentHour < 18;
-			setIsStoreOpen(isOpen);
+
+			const isWeekend = dayOfWeek === 0 || dayOfWeek === 6;
+			const isOperatingHours = currentHour >= 11 && currentHour < 16;
+
+			if (isWeekend || !isOperatingHours) {
+				setIsStoreOpen(false);
+			} else {
+				setIsStoreOpen(true);
+			}
 		};
+
 		checkStoreStatus();
 		const interval = setInterval(checkStoreStatus, 60000);
 		return () => clearInterval(interval);
@@ -246,7 +253,7 @@ export default function Home() {
 
 			<Header>
 				<HeaderTitle>Delícias da Dri</HeaderTitle>
-				<HeaderSlogan>"Aqui, é cada sabor no seu lugar!"</HeaderSlogan>
+				<HeaderSlogan>Aqui, é cada sabor no seu lugar!</HeaderSlogan>
 				<StatusBadge $isOpen={isStoreOpen}>
 					{isStoreOpen ? "Aberto" : "Fechado"}
 				</StatusBadge>
@@ -334,8 +341,6 @@ export default function Home() {
 			)}
 
 			<Footer />
-
-			{!isLoading && !isStoreOpen && <ClosedStoreModal />}
 		</AppContainer>
 	);
 }

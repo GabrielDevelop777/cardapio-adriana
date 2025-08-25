@@ -1,5 +1,5 @@
 import { CheckCircle, Info, XCircle } from "lucide-react";
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { ToastContainer } from "./styles";
 
 const Toast = ({ id, message, duration = 3000, onClose, type = "info" }) => {

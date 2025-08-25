@@ -30,10 +30,10 @@ import {
 export const mockData = {
 	dishOfTheDay: {
 		id: 101,
-		name: "Frango Assado com Maionese(Coxa Sobrecoxa)",
+		name: "Carré",
 		description: "Acompanha Arroz, Feijão, Macarrão, Farofa e Salada.",
-		price: 18,
-		image: assadoImg,
+		price: 15,
+		image: carreImg,
 	},
 	products: [
 		// --- PORÇÕES ---
