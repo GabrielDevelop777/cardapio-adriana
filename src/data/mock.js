@@ -30,10 +30,10 @@ import {
 export const mockData = {
 	dishOfTheDay: {
 		id: 101,
-		name: "Carne assada com Batata",
+		name: "Bife Acebolado",
 		description: "Acompanha Arroz, Feijão, Macarrão, Farofa e Salada.",
 		price: 23,
-		image: carneBatataImg,
+		image: bifeAcebolado,
 	},
 	products: [
 		// --- PORÇÕES ---
