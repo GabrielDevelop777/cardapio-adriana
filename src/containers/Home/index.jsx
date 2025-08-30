@@ -60,7 +60,7 @@ export default function Home() {
 			const dayOfWeek = now.getDay();
 			const currentHour = now.getHours();
 
-			const isWeekend = dayOfWeek === 0 || dayOfWeek === 6;
+			const isWeekend = dayOfWeek === 11 || dayOfWeek === 16;
 			const isOperatingHours = currentHour >= 10 && currentHour < 10;
 
 			if (isWeekend || !isOperatingHours) {
