@@ -61,7 +61,7 @@ export default function Home() {
 			const currentHour = now.getHours();
 
 			const isWeekend = dayOfWeek === 0 || dayOfWeek === 6;
-			const isOperatingHours = currentHour >= 11 && currentHour < 23;
+			const isOperatingHours = currentHour >= 11 && currentHour < 16;
 
 			if (isWeekend || !isOperatingHours) {
 				setIsStoreOpen(false);
