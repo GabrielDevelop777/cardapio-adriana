@@ -2,7 +2,6 @@ import React from "react";
 
 // Componente SVG para o ícone do PIX
 const PixIcon = ({ size = 20, color = "currentColor" }) => (
-	// biome-ignore lint/a11y/noSvgWithoutTitle: <explanation>
 	<svg
 		width={size}
 		height={size}
