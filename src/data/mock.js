@@ -30,10 +30,10 @@ import {
 export const mockData = {
 	dishOfTheDay: {
 		id: 101,
-		name: "Costela com Batata",
+		name: "Coxa Sobrecoxa com Salada de Legumes",
 		description: "Acompanha Arroz, Feijão, Macarrão, Farofa e Salada.",
 		price: 23,
-		image: costelaImg,
+		image: assadoImg,
 	},
 	products: [
 		// --- PORÇÕES ---
