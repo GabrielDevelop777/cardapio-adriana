@@ -152,7 +152,7 @@ const CheckoutDrawer = ({
 				.trim()
 				.replace(/\s+/g, "%20");
 
-			const whatsappNumber = "5521965150526";
+			const whatsappNumber = "5521980681134";
 			const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${message}`;
 
 			window.open(whatsappUrl, "_blank");

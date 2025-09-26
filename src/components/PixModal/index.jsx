@@ -1,6 +1,6 @@
 import { Check, Send } from "lucide-react";
 import { QRCodeSVG } from "qrcode.react";
-import React, { useState, useMemo } from "react";
+import React, { useMemo, useState } from "react";
 import { generatePixCode } from "../../lib/pix";
 import {
 	ActionButton,
@@ -38,7 +38,7 @@ const PixModal = ({ total, onClose, formData, cartItems, deliveryType }) => {
 	};
 
 	const handleSendReceipt = () => {
-		const whatsappNumber = "5521965150526";
+		const whatsappNumber = "5521980681134";
 
 		const orderSummary = cartItems
 			.map((item) => `• ${item.quantity}x ${item.name}`)

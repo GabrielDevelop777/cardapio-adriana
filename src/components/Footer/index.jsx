@@ -34,7 +34,7 @@ const Footer = () => {
 					<Facebook size={28} />
 				</SocialLink>
 				<SocialLink
-					href="https://wa.me/5521965150526"
+					href="https://wa.me/5521980681134"
 					target="_blank"
 					rel="noopener noreferrer"
 					aria-label="WhatsApp"
