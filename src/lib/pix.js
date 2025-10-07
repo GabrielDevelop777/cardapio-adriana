@@ -1,12 +1,9 @@
 // Função para normalizar o texto (remove acentos, converte para maiúsculo)
 const normalizeText = (text) => {
-	return (
-		text
-			.normalize("NFD")
-			// biome-ignore lint/suspicious/noMisleadingCharacterClass: <explanation>
-			.replace(/[\u0300-\u036f]/g, "")
-			.toUpperCase()
-	);
+	return text
+		.normalize("NFD")
+		.replace(/[\u0300-\u036f]/g, "")
+		.toUpperCase();
 };
 
 // Função principal para gerar o código PIX
